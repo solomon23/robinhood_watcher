@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chart component should render 1`] = `
+<div>
+  <div>
+    <div
+      className="label"
+    />
+    <div
+      className="price"
+    >
+      12.00
+    </div>
+  </div>
+  <div
+    className="chart"
+    onMouseLeave={[Function]}
+    onMouseMove={[Function]}
+  >
+    <SingleRenderChart
+      data={
+        Object {
+          "series": Array [
+            Object {
+              "data": Array [],
+              "labels": Array [],
+              "name": undefined,
+            },
+          ],
+        }
+      }
+      options={
+        Object {
+          "axisX": Object {
+            "showGrid": false,
+          },
+          "chartPadding": 20,
+          "fullWidth": true,
+          "height": "535px",
+          "plugins": Array [
+            [Function],
+            [Function],
+          ],
+          "targetLine": Object {
+            "value": 10,
+          },
+        }
+      }
+    />
+  </div>
+</div>
+`;

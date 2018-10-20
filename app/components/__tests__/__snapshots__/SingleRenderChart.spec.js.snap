@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleRenderChart component should render 1`] = `
+<ChartistGraph
+  data={
+    Object {
+      "id": 1,
+    }
+  }
+  options={
+    Object {
+      "options": true,
+    }
+  }
+  type="Line"
+/>
+`;

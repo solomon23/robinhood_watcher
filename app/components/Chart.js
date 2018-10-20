@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import ChartistGraph from 'react-chartist'
 import targetLine from '../3rd_party/chartist-plugin-targetline'
 import targetThresh from '../3rd_party/chartist-plugin-threshold'
 import styles from './styles/Chart.scss'
 import { getSMA } from '../services/api'
+import SingleRenderChart from './SingleRenderChart'
 
 const CHART_LEFT = 90
 const CHART_RIGHT = 804
@@ -156,7 +156,7 @@ export default class Chart extends Component<Props> {
               <div className={styles.tooltipTitle}>{label}</div>
             </div>
           )}
-          <ChartistGraph data={chartData} options={options} type="Line" />
+          <SingleRenderChart data={chartData} options={options} />
         </div>
       </div>
     )
