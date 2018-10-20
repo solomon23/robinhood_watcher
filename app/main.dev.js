@@ -78,8 +78,8 @@ app.on('ready', async () => {
   })
 
   ipcMain.on('CHART', (event, data) => {
-    const { symbol, stock } = data
-    createStockWindow(symbol, stock)
+    const { symbol } = data
+    createStockWindow(symbol)
   })
 
   // @TODO: Use 'ready-to-show' event
