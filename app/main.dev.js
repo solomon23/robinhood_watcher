@@ -71,7 +71,7 @@ app.on('ready', async () => {
 
   Toolbar.create()
   // mainWindow.loadURL(`file://${__dirname}/app.html`)
-  // mainWindow.loadURL(`file://${__dirname}/chart.html?symbol=AAPL`)
+  // mainWindow.loadURL(`file://${__dirname}/app.html?symbol=AAPL`)
 
   ipcMain.on('SET_MENU_TITLE', (event, arg) => {
     Toolbar.setTitle(arg)
@@ -117,7 +117,7 @@ const createStockWindow = async (symbol) => {
     show: true,
   })
 
-  stockInfoWindow.loadURL(`file://${__dirname}/chart.html?symbol=${symbol}`)
+  stockInfoWindow.loadURL(`file://${__dirname}/app.html?symbol=${symbol}`)
 
   stockInfoWindow.on('close', () => {
     stockInfoWindow = null

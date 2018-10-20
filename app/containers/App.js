@@ -24,24 +24,25 @@ type Props = {
 class App extends React.Component<Props> {
   props: Props
 
+  static chartingSymbol() {
+    return queryString.parse(window.location.search).symbol
+  }
+
   componentDidMount() {
-    const isChartView = window.isChartView
     const { user, tryAuth } = this.props
 
-    if (!user.authenticated && !isChartView) {
+    if (!user.authenticated && !App.chartingSymbol()) {
       // try to authenticate them
       tryAuth()
     }
   }
 
   render() {
-    const isChartView = window.isChartView
+    const symbol = App.chartingSymbol()
     const { children, user } = this.props
 
-    if (isChartView) {
-      console.log(queryString.parse(window.location.search))
-      const symbols = queryString.parse(window.location.search).symbol
-      return <React.Fragment><ChartPage symbol={symbols} /></React.Fragment>
+    if (symbol) {
+      return <React.Fragment><ChartPage symbol={symbol} /></React.Fragment>
     }
 
     if (!user.authenticated) {
