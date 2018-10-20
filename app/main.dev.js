@@ -71,7 +71,7 @@ app.on('ready', async () => {
 
   Toolbar.create()
   // mainWindow.loadURL(`file://${__dirname}/app.html`)
-  // mainWindow.loadURL(`file://${__dirname}/app.html?symbol=AAPL`)
+  // mainWindow.loadURL(`file://${__dirname}/app.html?symbol=GAMR`)
 
   ipcMain.on('SET_MENU_TITLE', (event, arg) => {
     Toolbar.setTitle(arg)

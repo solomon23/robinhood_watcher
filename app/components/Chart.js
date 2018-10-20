@@ -23,6 +23,8 @@ export default class Chart extends Component<Props> {
 
     this.state = {
       sma: null,
+      chartData: null,
+      options: null,
       tooltip: false,
       mouse: {
         x: 0,
@@ -34,8 +36,11 @@ export default class Chart extends Component<Props> {
   componentDidMount() {
     const { symbol } = this.props
 
-    getSMA(symbol).then((results) => {
-      this.setState({ sma: results })
+    getSMA(symbol).then((sma) => {
+      // build the chart data once and store it
+      const { chartData, options } = this.getChartData(sma)
+
+      this.setState({ sma, chartData, options })
       return null
     }).catch((err) => {
       console.log(err)
@@ -43,9 +48,11 @@ export default class Chart extends Component<Props> {
   }
 
   getPriceForPosition(position) {
-    const { sma } = this.state
+    const { chartData } = this.state
+    const items = chartData.series[0].data
+
     const relative = position - CHART_LEFT
-    let currentPrice = Number(sma[sma.length - 1].marketClose).toFixed(2)
+    let currentPrice = Number(items[items.length - 1].y).toFixed(2)
     let label = ''
 
     if (relative >= 0) {
@@ -53,30 +60,36 @@ export default class Chart extends Component<Props> {
       const percent = (100 * relative) / (CHART_RIGHT - CHART_LEFT)
 
       // use the percent to get an index into the data array
-      let index = Math.round(((sma.length - 1) * (percent / 100)))
+      let index = Math.round(((items.length - 1) * (percent / 100)))
 
       // if it's beyond the max, use the max
-      if (index > sma.length -1) {
-        index = sma.length - 1
+      if (index > items.length -1) {
+        index = items.length - 1
       }
 
       // return the data
-      currentPrice = Number(sma[index].marketClose).toFixed(2)
-      label = sma[index].label
+      currentPrice = Number(items[index].y).toFixed(2)
+      label = items[index].x
     }
 
     return { currentPrice, label }
   }
 
-  getChartData() {
-    const { sma } = this.state
+  getChartData(sma) {
     const marketOpen = sma[0].marketOpen
     const { symbol } = this.props
 
-    const points = sma.map(item => ({
-      x: item.label,
-      y: Number(item.average).toFixed(2),
-    })).filter(point => point.y >= 0)
+    const points = sma.map((item) => {
+      let average = item.average
+      if (average === -1) {
+        average = item.marketAverage
+      }
+
+      return {
+        x: item.label,
+        y: Number(average).toFixed(2),
+      }
+    }).filter(point => point.y >= 0)
 
     const labels = points.map((point) => point.x)
 
@@ -122,15 +135,12 @@ export default class Chart extends Component<Props> {
   }
 
   render() {
-    const { sma, mouse, tooltip } = this.state
+    const { sma, mouse, tooltip, chartData, options } = this.state
     const { symbol } = this.props
 
     if (!sma) {
       return null
     }
-
-    // build the chart
-    const { chartData, options } = this.getChartData()
 
     // don't let the tooltip leave the chart
     let left = mouse.x

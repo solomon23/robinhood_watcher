@@ -22,8 +22,15 @@ exports[`Chart component should render 1`] = `
         Object {
           "series": Array [
             Object {
-              "data": Array [],
-              "labels": Array [],
+              "data": Array [
+                Object {
+                  "x": "1 PM",
+                  "y": "12.00",
+                },
+              ],
+              "labels": Array [
+                "1 PM",
+              ],
               "name": undefined,
             },
           ],
