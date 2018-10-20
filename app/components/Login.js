@@ -40,10 +40,28 @@ export default class Login extends Component<Props> {
 
     return (
       <div className={classnames(styles.login, { [styles.loading]: user.isLoading })}>
-        <input className={styles.input} type="text" placeholder="USERNAME" value={username} onChange={e => this.oChangeField('username', e)} />
-        <input className={styles.input} type="password" placeholder="PASSWORD" value={password} onChange={e => this.oChangeField('password', e)} />
+        <input
+          type="text"
+          className={styles.input}
+          placeholder="USERNAME"
+          value={username}
+          onChange={e => this.oChangeField('username', e)}
+        />
+        <input
+          className={styles.input}
+          type="password"
+          placeholder="PASSWORD"
+          value={password}
+          onChange={e => this.oChangeField('password', e)}
+        />
         {(user.needsMfa || token) && (
-          <input type="text" className={styles.input} placeholder="TOKEN" value={token} onChange={e => this.oChangeField('token', e)} />
+          <input
+            type="text"
+            className={styles.input}
+            placeholder="TOKEN"
+            value={token}
+            onChange={e => this.oChangeField('token', e)}
+          />
         )}
         <button
           className={styles.btn}

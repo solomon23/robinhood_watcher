@@ -66,8 +66,8 @@ app.on('ready', async () => {
     height: 500,
   })
 
-  // Toolbar.create()
-  mainWindow.loadURL(`file://${__dirname}/app.html`)
+  Toolbar.create()
+  // mainWindow.loadURL(`file://${__dirname}/app.html`)
 
   ipcMain.on('SET_MENU_TITLE', (event, arg) => {
     Toolbar.setTitle(arg)

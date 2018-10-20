@@ -50,21 +50,19 @@ export function getAccountPositions() {
 
 export function getAllData() {
   return async function getAllCallback(dispatch: Dispatch, getState: GetState) {
-    // (async () => {
-      const { user } = getState()
+    const { user } = getState()
 
-      // bail if the user isn't logged in
-      if (!user.authenticated) {
-        return
-      }
+    // bail if the user isn't logged in
+    if (!user.authenticated) {
+      return
+    }
 
-      if (!user.accountNumber) {
-        await getAccount()(dispatch, getState)
-      }
+    if (!user.accountNumber) {
+      await getAccount()(dispatch, getState)
+    }
 
-      // const positions = await API.getAccountPositions(user)
-      await getPortfolio()(dispatch, getState)
-      await getAccountPositions()(dispatch, getState)
-    // })()
+    // const positions = await API.getAccountPositions(user)
+    await getPortfolio()(dispatch, getState)
+    await getAccountPositions()(dispatch, getState)
   }
 }

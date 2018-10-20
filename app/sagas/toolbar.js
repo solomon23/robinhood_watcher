@@ -5,7 +5,7 @@ import * as appActions from '../actions/app'
 function* handleTitleChange() {
   yield takeEvery(appActions.GET_PORTFOLIO.SUCCESS, function* get() {
     const state = yield select()
-    ipcRenderer.send('SET_MENU_TITLE', state.toolbar)
+    ipcRenderer.send('SET_MENU_TITLE', state.toolbar.title)
   })
 }
 

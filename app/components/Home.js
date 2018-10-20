@@ -26,7 +26,6 @@ export default class Home extends Component<Props> {
   componentDidMount() {
     const { startRefreshTimer } = this.props
 
-    // getAllData()
     startRefreshTimer()
   }
 
@@ -40,6 +39,7 @@ export default class Home extends Component<Props> {
     const { portfolio, positions, actions } = this.props
 
     if (!Object.keys(portfolio).length > 0) {
+      // show a loading state here
       return null
     }
 

@@ -5,12 +5,12 @@ const initialState = {
   actions: {
     portfolioLoading: false,
     positionsLoading: false,
+    refreshing: false,
   },
   portfolio: {
   },
   positions: [
   ],
-  refreshing: false,
 }
 
 describe('App reducer', () => {

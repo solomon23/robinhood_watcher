@@ -3,7 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as UserActions from '../actions/user'
-import Login from './Login'
+import LoginPage from './LoginPage'
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(UserActions, dispatch)
@@ -35,7 +35,7 @@ class App extends React.Component<Props> {
     const { children, user } = this.props
 
     if (!user.authenticated) {
-      return <React.Fragment><Login /></React.Fragment>
+      return <React.Fragment><LoginPage /></React.Fragment>
     }
 
     return <React.Fragment>{children}</React.Fragment>

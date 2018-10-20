@@ -52,12 +52,16 @@ Object {
 
 exports[`App reducer should handle START_REFRESH_TIMER 1`] = `
 Object {
-  "refreshing": true,
+  "actions": Object {
+    "refreshing": true,
+  },
 }
 `;
 
 exports[`App reducer should handle STOP_REFRESH_TIMER 1`] = `
 Object {
-  "refreshing": false,
+  "actions": Object {
+    "refreshing": false,
+  },
 }
 `;

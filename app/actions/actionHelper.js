@@ -57,14 +57,11 @@ export function doApiCall(options) {
 
         return response
       }, (error) => {
-        // todo : solomon : log the user out here
-        // todo : solomon : reset the token here
         opts.action.map(act => dispatch(act.failure({ request: params, response: error })))
         return Promise.reject(error)
       }).catch((error) => {
-        // throw the error to break out of the promise
-        // throw error
         if (error === 401) {
+          // log the user out and stop refreshing the data since our auth token is no longer valid
           dispatch(userActions.logout())
           dispatch(appActions.stopRefresh())
         }
