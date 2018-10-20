@@ -1,7 +1,6 @@
-:global { @import '~chartist/dist/scss/chartist.scss'; }
+@import 'Variables';
 
-$green: #21ce99;
-$red: #f45531;
+:global { @import '~chartist/dist/scss/chartist.scss'; }
 
 :global {
   .ct-line.ct-threshold-above,

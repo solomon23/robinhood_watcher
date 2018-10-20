@@ -41,8 +41,6 @@ export default class Chart extends Component<Props> {
 
     const currentPrice = Number(sma[sma.length - 1].marketClose).toFixed(2)
     const marketOpen = sma[0].marketOpen
-    const marketClose = sma[0].marketClose
-    const className = marketClose < marketOpen ? 'loss' : 'gain'
 
     const points = sma.map(item => ({
       x: item.label,
@@ -55,7 +53,6 @@ export default class Chart extends Component<Props> {
       series: [{
         name: symbol,
         data: points,
-        className,
         labels,
       }],
     }

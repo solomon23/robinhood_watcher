@@ -1,3 +1,4 @@
+@import 'Variables';
 
 .equityContainer {
   text-align: center;
@@ -11,7 +12,7 @@
 
 .header {
   padding: 8px 0 16px 0;
-  background-color: #21ce99;
+  background-color: $green;
   flex: 0 1 auto;
 }
 

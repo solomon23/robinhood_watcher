@@ -1,3 +1,5 @@
+@import 'Variables';
+
 .btn, .input {
   width: 200px;
   height: 26px;
@@ -13,7 +15,7 @@
 }
 
 .btn {
-  background-color: #21ce99;
+  background-color: $green;
   padding: 0;
   border-style: none;
   color: #fff;
