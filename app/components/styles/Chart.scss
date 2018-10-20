@@ -48,6 +48,7 @@
 
 .chart {
   padding-left: 30px;
+  position: relative;
 }
 
 .label {
@@ -59,4 +60,20 @@
   font-size: 18px;
   margin-left: 30px;
   margin-bottom: 24px;
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  height: 485px;
+  width: 1px;
+  background-color: #444;
+}
+
+.tooltipTitle {
+  margin-left: -25px;
+  position: absolute;
+  top: -20px;
+  white-space: nowrap;
+  font-size: 12px;
 }

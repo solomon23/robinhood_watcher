@@ -5,6 +5,9 @@ import targetThresh from '../3rd_party/chartist-plugin-threshold'
 import styles from './styles/Chart.scss'
 import { getSMA } from '../services/api'
 
+const CHART_LEFT = 90
+const CHART_RIGHT = 804
+
 type Props = {
   symbol: string
 }
@@ -15,8 +18,16 @@ export default class Chart extends Component<Props> {
   constructor(props, context) {
     super(props, context)
 
+    this.onMouseMove = this.onMouseMove.bind(this)
+    this.onHideTooltip = this.onHideTooltip.bind(this)
+
     this.state = {
       sma: null,
+      tooltip: false,
+      mouse: {
+        x: 0,
+        y: 0,
+      },
     }
   }
 
@@ -31,16 +42,36 @@ export default class Chart extends Component<Props> {
     })
   }
 
-  render() {
+  getPriceForPosition(position) {
     const { sma } = this.state
-    const { symbol } = this.props
+    const relative = position - CHART_LEFT
+    let currentPrice = Number(sma[sma.length - 1].marketClose).toFixed(2)
+    let label = ''
 
-    if (!sma) {
-      return null
+    if (relative >= 0) {
+      // find the mouse position by percent of width
+      const percent = (100 * relative) / (CHART_RIGHT - CHART_LEFT)
+
+      // use the percent to get an index into the data array
+      let index = Math.round(((sma.length - 1) * (percent / 100)))
+
+      // if it's beyond the max, use the max
+      if (index > sma.length -1) {
+        index = sma.length - 1
+      }
+
+      // return the data
+      currentPrice = Number(sma[index].marketClose).toFixed(2)
+      label = sma[index].label
     }
 
-    const currentPrice = Number(sma[sma.length - 1].marketClose).toFixed(2)
+    return { currentPrice, label }
+  }
+
+  getChartData() {
+    const { sma } = this.state
     const marketOpen = sma[0].marketOpen
+    const { symbol } = this.props
 
     const points = sma.map(item => ({
       x: item.label,
@@ -78,13 +109,53 @@ export default class Chart extends Component<Props> {
       ],
     }
 
+    return { chartData, options }
+  }
+
+  onMouseMove(e) {
+    const mouse = { x: e.clientX, y: e.clientY }
+    this.setState({ mouse, tooltip: true })
+  }
+
+  onHideTooltip() {
+    this.setState({ tooltip: false })
+  }
+
+  render() {
+    const { sma, mouse, tooltip } = this.state
+    const { symbol } = this.props
+
+    if (!sma) {
+      return null
+    }
+
+    // build the chart
+    const { chartData, options } = this.getChartData()
+
+    // don't leave the tooltip leave the chart
+    let left = mouse.x
+    if (left < CHART_LEFT) {
+      left = CHART_LEFT
+    }
+
+    if (left > CHART_RIGHT) {
+      left = CHART_RIGHT
+    }
+
+    const { currentPrice, label } = this.getPriceForPosition(left)
+
     return (
       <div>
         <div>
           <div className={styles.label}>{symbol}</div>
           <div className={styles.price}>{currentPrice}</div>
         </div>
-        <div className={styles.chart}>
+        <div className={styles.chart} onMouseMove={this.onMouseMove} onMouseLeave={this.onHideTooltip}>
+          {tooltip && (
+            <div className={styles.tooltip} style={{ left }}>
+              <div className={styles.tooltipTitle}>{label}</div>
+            </div>
+          )}
           <ChartistGraph data={chartData} options={options} type="Line" />
         </div>
       </div>
