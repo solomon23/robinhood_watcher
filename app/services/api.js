@@ -220,3 +220,7 @@ export async function authenticate(username, password, mfaCode,) {
     }
   }
 }
+
+export async function getSMA(symbol) {
+  return (await fetch(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1d`)).json()
+}

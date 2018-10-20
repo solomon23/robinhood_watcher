@@ -3,6 +3,7 @@
 exports[`StockRow component should display after hours value 1`] = `
 <div
   className="stockRow"
+  onClick={[Function]}
 >
   <div
     className="sybmol"
@@ -27,6 +28,7 @@ exports[`StockRow component should display after hours value 1`] = `
 exports[`StockRow component should display negative value 1`] = `
 <div
   className="stockRow"
+  onClick={[Function]}
 >
   <div
     className="sybmol"
@@ -51,6 +53,7 @@ exports[`StockRow component should display negative value 1`] = `
 exports[`StockRow component should display positive value 1`] = `
 <div
   className="stockRow"
+  onClick={[Function]}
 >
   <div
     className="sybmol"

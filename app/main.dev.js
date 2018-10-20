@@ -14,6 +14,7 @@ import { app, BrowserWindow, ipcMain } from 'electron'
 import Toolbar from './toolbar'
 
 let mainWindow = null
+let stockInfoWindow = null
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support')
@@ -64,13 +65,21 @@ app.on('ready', async () => {
     show: false,
     width: 250,
     height: 500,
+    // width: 825,
+    // height: 625,
   })
 
   Toolbar.create()
   // mainWindow.loadURL(`file://${__dirname}/app.html`)
+  // mainWindow.loadURL(`file://${__dirname}/chart.html?symbol=AAPL`)
 
   ipcMain.on('SET_MENU_TITLE', (event, arg) => {
     Toolbar.setTitle(arg)
+  })
+
+  ipcMain.on('CHART', (event, data) => {
+    const { symbol, stock } = data
+    createStockWindow(symbol, stock)
   })
 
   // @TODO: Use 'ready-to-show' event
@@ -91,3 +100,26 @@ app.on('ready', async () => {
     mainWindow = null
   })
 })
+
+const createStockWindow = async (symbol) => {
+  if (stockInfoWindow !== null) {
+    stockInfoWindow.destroy()
+  }
+
+  stockInfoWindow = new BrowserWindow({
+    width: 825,
+    height: 625,
+    backgroundColor: '#212025',
+    center: false,
+    title: symbol,
+    resizable: false,
+    titleBarStyle: 'hidden',
+    show: true,
+  })
+
+  stockInfoWindow.loadURL(`file://${__dirname}/chart.html?symbol=${symbol}`)
+
+  stockInfoWindow.on('close', () => {
+    stockInfoWindow = null
+  })
+}

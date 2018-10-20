@@ -1,0 +1,61 @@
+$green: #21ce99;
+$red: #f45531;
+
+:global {
+  .ct-line.ct-threshold-above,
+  .ct-point.ct-threshold-above,
+  .ct-bar.ct-threshold-above {
+      stroke: $green;
+  }
+
+  .ct-line.ct-threshold-below,
+  .ct-point.ct-threshold-below,
+  .ct-bar.ct-threshold-below {
+      stroke: $red;
+  }
+
+  .ct-area.ct-threshold-above {
+      fill: $green;
+  }
+
+  .ct-area.ct-threshold-below {
+      fill: $red;
+  }
+
+  .ct-point {
+    stroke-width: 15px;
+    stroke-linecap: round;
+    stroke-opacity: 0;
+  }
+
+  .ct-label {
+    color: #fff;
+  }
+
+  .stock-tooltip.chartist-tooltip {
+      background-color: $green;
+  }
+
+  .stock-tooltip.chartist-tooltip::before {
+      background-color: $green;
+  }
+
+  .ct-line {
+    stroke-width: 1px;
+  }
+}
+
+.chart {
+  padding-left: 30px;
+}
+
+.label {
+  font-size: 32px;
+  margin: 30px 0 4px 30px;
+}
+
+.price {
+  font-size: 18px;
+  margin-left: 30px;
+  margin-bottom: 24px;
+}

@@ -1,12 +1,17 @@
 .stockRow {
   text-align: left;
-  margin-bottom: 10px;
+  padding: 8px 16px;
   color: #fff;
   font-size: 20px;
-}
 
-.stockRow > div {
-  display: inline-block;
+  & > div {
+    display: inline-block;
+  }
+
+  &:hover {
+    background-color: #212125;
+    cursor: pointer;
+  }
 }
 
 .count {
