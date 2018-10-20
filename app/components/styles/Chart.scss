@@ -1,8 +1,8 @@
 @import 'Variables';
 
-:global { @import '~chartist/dist/scss/chartist.scss'; }
-
 :global {
+  @import '~chartist/dist/scss/chartist.scss';
+
   .ct-line.ct-threshold-above,
   .ct-point.ct-threshold-above,
   .ct-bar.ct-threshold-above {
