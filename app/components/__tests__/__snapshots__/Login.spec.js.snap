@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component should display 1`] = `
+<div
+  className="login"
+>
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="USERNAME"
+    type="text"
+    value=""
+  />
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="PASSWORD"
+    type="password"
+    value=""
+  />
+  <button
+    className="btn"
+    data-tclass="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    LOGIN
+  </button>
+</div>
+`;
+
+exports[`Login component should display loading 1`] = `
+<div
+  className="login loading"
+>
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="USERNAME"
+    type="text"
+    value=""
+  />
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="PASSWORD"
+    type="password"
+    value=""
+  />
+  <button
+    className="btn"
+    data-tclass="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    LOGIN
+  </button>
+</div>
+`;
+
+exports[`Login component should show token 1`] = `
+<div
+  className="login"
+>
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="USERNAME"
+    type="text"
+    value=""
+  />
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="PASSWORD"
+    type="password"
+    value=""
+  />
+  <input
+    className="input"
+    onChange={[Function]}
+    placeholder="TOKEN"
+    type="text"
+    value=""
+  />
+  <button
+    className="btn"
+    data-tclass="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    LOGIN
+  </button>
+</div>
+`;

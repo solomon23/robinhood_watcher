@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockRow component should display after hours value 1`] = `
+<div
+  className="stockRow"
+>
+  <div
+    className="sybmol"
+  >
+    a
+    <div
+      className="count"
+    >
+      1
+       
+      Share
+    </div>
+  </div>
+  <div
+    className="value"
+  >
+    +$15.00
+  </div>
+</div>
+`;
+
+exports[`StockRow component should display negative value 1`] = `
+<div
+  className="stockRow"
+>
+  <div
+    className="sybmol"
+  >
+    a
+    <div
+      className="count"
+    >
+      1
+       
+      Share
+    </div>
+  </div>
+  <div
+    className="value loss"
+  >
+    -$10.00
+  </div>
+</div>
+`;
+
+exports[`StockRow component should display positive value 1`] = `
+<div
+  className="stockRow"
+>
+  <div
+    className="sybmol"
+  >
+    a
+    <div
+      className="count"
+    >
+      1
+       
+      Share
+    </div>
+  </div>
+  <div
+    className="value"
+  >
+    +$5.00
+  </div>
+</div>
+`;

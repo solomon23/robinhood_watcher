@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user actions should fail at trying to authenticate 1`] = `
+Array [
+  Object {
+    "type": "LOGIN_USER_LOADING",
+  },
+  Object {
+    "message": undefined,
+    "type": "LOGIN_USER_ERROR",
+  },
+]
+`;
+
+exports[`user actions should fire login 1`] = `
+Array [
+  Object {
+    "type": "LOGIN_USER_LOADING",
+  },
+  Object {
+    "response": Object {
+      "authenticated": true,
+      "twoFactorAuthRequired": false,
+    },
+    "type": "LOGIN_USER_SUCCESS",
+  },
+]
+`;
+
+exports[`user actions should fire logout 1`] = `
+Object {
+  "type": "USER_LOGOUT",
+}
+`;
+
+exports[`user actions should succeeded at refreshing the token 1`] = `
+Array [
+  Object {
+    "type": "LOGIN_USER_LOADING",
+  },
+  Object {
+    "response": Object {
+      "authenticated": true,
+    },
+    "type": "LOGIN_USER_SUCCESS",
+  },
+]
+`;
+
+exports[`user actions should succeeded at trying to authenticate 1`] = `
+Array [
+  Object {
+    "type": "LOGIN_USER_LOADING",
+  },
+  Object {
+    "response": Object {
+      "authenticated": true,
+    },
+    "type": "LOGIN_USER_SUCCESS",
+  },
+]
+`;

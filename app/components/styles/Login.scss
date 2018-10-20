@@ -1,0 +1,29 @@
+.btn, .input {
+  width: 200px;
+  height: 26px;
+  padding-left: 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.login {
+  padding-top: 16px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #21ce99;
+  padding: 0;
+  border-style: none;
+  color: #fff;
+  width: 211px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.loading {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}

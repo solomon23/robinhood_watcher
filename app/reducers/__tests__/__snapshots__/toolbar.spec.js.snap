@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toolbar reducer should handle GET_PORTFOLIO.SUCCESS 1`] = `"$100.00"`;
+
+exports[`toolbar reducer should handle GET_PORTFOLIO.SUCCESS after hours 1`] = `"$200.00"`;

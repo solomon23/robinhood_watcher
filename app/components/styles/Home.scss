@@ -1,0 +1,51 @@
+
+.equityContainer {
+  text-align: center;
+  overflow: hidden;
+  color: #000;
+  font-size: 14px;
+  display: flex;
+  height: 100vh;
+  flex-flow: column;
+}
+
+.header {
+  padding: 8px 0;
+  background-color: #21ce99;
+  flex: 0 1 auto;
+}
+
+.equity {
+  font-size: 26px;
+  color: #fafafa;
+  margin-bottom: 8px;
+}
+
+.afterHours {
+  margin-top: 4px;
+  color: #222;
+}
+
+.refresh {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  background-size: 100% 100%;
+  background-image: url('../../../resources/reload.png');
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.reloading {
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+      transform: rotate(360deg);
+  }
+}

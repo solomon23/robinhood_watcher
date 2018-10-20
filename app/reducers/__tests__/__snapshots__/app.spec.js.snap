@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App reducer should handle GET_ACCOUNT_POSITIONS.FAILURE 1`] = `
+Object {
+  "actions": Object {
+    "positionsLoading": false,
+  },
+}
+`;
+
+exports[`App reducer should handle GET_ACCOUNT_POSITIONS.REQUEST 1`] = `
+Object {
+  "actions": Object {
+    "positionsLoading": true,
+  },
+}
+`;
+
+exports[`App reducer should handle GET_ACCOUNT_POSITIONS.SUCCESS 1`] = `
+Object {
+  "actions": Object {
+    "positionsLoading": false,
+  },
+  "positions": Array [],
+}
+`;
+
+exports[`App reducer should handle GET_PORTFOLIO.FAILURE 1`] = `
+Object {
+  "actions": Object {
+    "portfolioLoading": false,
+  },
+}
+`;
+
+exports[`App reducer should handle GET_PORTFOLIO.REQUEST 1`] = `
+Object {
+  "actions": Object {
+    "portfolioLoading": true,
+  },
+}
+`;
+
+exports[`App reducer should handle GET_PORTFOLIO.SUCCESS 1`] = `
+Object {
+  "actions": Object {
+    "portfolioLoading": false,
+  },
+  "portfolio": undefined,
+}
+`;
+
+exports[`App reducer should handle START_REFRESH_TIMER 1`] = `
+Object {
+  "refreshing": true,
+}
+`;
+
+exports[`App reducer should handle STOP_REFRESH_TIMER 1`] = `
+Object {
+  "refreshing": false,
+}
+`;

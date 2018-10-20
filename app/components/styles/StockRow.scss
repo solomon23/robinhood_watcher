@@ -1,0 +1,26 @@
+.stockRow {
+  text-align: left;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.stockRow > div {
+  display: inline-block;
+}
+
+.count {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.value {
+  font-size: 22px;
+  float: right;
+  color: green;
+  margin-top: 4px;
+}
+
+.loss {
+  color: red;
+}

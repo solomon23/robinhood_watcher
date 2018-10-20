@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockList component should display empty 1`] = `
+<div
+  className="stockList"
+/>
+`;
+
+exports[`StockList component should sort list 1`] = `
+<div
+  className="stockList"
+>
+  <StockList
+    key="a"
+    stock={
+      Object {
+        "symbol": "a",
+      }
+    }
+  />
+  <StockList
+    key="c"
+    stock={
+      Object {
+        "symbol": "c",
+      }
+    }
+  />
+  <StockList
+    key="z"
+    stock={
+      Object {
+        "symbol": "z",
+      }
+    }
+  />
+</div>
+`;

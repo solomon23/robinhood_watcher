@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component should display for after hours 1`] = `
+<div
+  className="equityContainer"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="refresh"
+      onClick={[Function]}
+    />
+    <div
+      className="equity"
+    >
+      $102.00
+    </div>
+    <div
+      className="change"
+    >
+      -$1.00 (-0.99%)
+       Today
+    </div>
+    <div
+      className="afterHours"
+    >
+      +$2.00 (+2.00%)
+       After Hours
+    </div>
+  </div>
+  <StockList
+    stocks={Array []}
+  />
+</div>
+`;
+
+exports[`Home component should display for open hours 1`] = `
+<div
+  className="equityContainer"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="refresh"
+      onClick={[Function]}
+    />
+    <div
+      className="equity"
+    >
+      $100.00
+    </div>
+    <div
+      className="change"
+    >
+      -$1.00 (-0.99%)
+       Today
+    </div>
+  </div>
+  <StockList
+    stocks={Array []}
+  />
+</div>
+`;
+
+exports[`Home component should show loading 1`] = `
+<div
+  className="equityContainer"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="refresh reloading"
+      onClick={[Function]}
+    />
+    <div
+      className="equity"
+    >
+      $100.00
+    </div>
+    <div
+      className="change"
+    >
+      -$1.00 (-0.99%)
+       Today
+    </div>
+  </div>
+  <StockList
+    stocks={Array []}
+  />
+</div>
+`;

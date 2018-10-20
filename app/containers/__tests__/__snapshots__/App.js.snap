@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should show login 1`] = `
+<React.Fragment>
+  <Connect(Login) />
+</React.Fragment>
+`;
+
+exports[`App component should show page 1`] = `<React.Fragment />`;

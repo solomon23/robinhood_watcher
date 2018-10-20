@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User reducer should handle GET_ACCOUNT_NUMBER.SUCCESS 1`] = `
+Object {
+  "accountNumber": "123",
+}
+`;
+
+exports[`User reducer should handle LOGIN_USER_ERROR 1`] = `
+Object {
+  "accountNumber": null,
+  "authenticated": false,
+  "errorReason": "bad",
+  "isError": true,
+  "isLoading": false,
+  "needsMfa": false,
+}
+`;
+
+exports[`User reducer should handle LOGIN_USER_LOADING 1`] = `
+Object {
+  "accountNumber": null,
+  "authenticated": false,
+  "errorReason": null,
+  "isError": false,
+  "isLoading": true,
+  "needsMfa": false,
+}
+`;
+
+exports[`User reducer should handle LOGIN_USER_NEEDS_MFA 1`] = `
+Object {
+  "accountNumber": null,
+  "authenticated": false,
+  "errorReason": null,
+  "isError": false,
+  "isLoading": false,
+  "needsMfa": true,
+}
+`;
+
+exports[`User reducer should handle LOGIN_USER_SUCCESS 1`] = `
+Object {
+  "accountNumber": null,
+  "authenticated": true,
+  "errorReason": null,
+  "isError": false,
+  "isLoading": false,
+  "needsMfa": false,
+}
+`;
+
+exports[`User reducer should handle USER_LOGOUT 1`] = `
+Object {
+  "accountNumber": null,
+  "authenticated": false,
+  "errorReason": null,
+  "isError": false,
+  "isLoading": false,
+  "needsMfa": false,
+}
+`;
