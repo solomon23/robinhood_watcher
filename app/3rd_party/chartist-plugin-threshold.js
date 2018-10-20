@@ -130,5 +130,4 @@
   }(window, document, Chartist));
 
   return Chartist.plugins.ctThreshold;
-
 }));
