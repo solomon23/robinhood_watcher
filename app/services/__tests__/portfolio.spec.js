@@ -37,7 +37,7 @@ describe('portfolio', () => {
         adjusted_equity_previous_close: 20,
       })
     ).toEqual({
-      afterHoursEquityDifference: "-$2.00 (20.00%)",
+      afterHoursEquityDifference: "-$2.00 (-20.00%)",
       equity: "$8.00",
       equityDifference: "-$10.00 (-50.00%)",
     })

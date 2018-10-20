@@ -16,7 +16,7 @@ export function calculateEquity(portfolio) {
     const afterHoursSign = afterHoursEquityDifference >= 0 ? '+' : ''
     const afterPercent = `${Math.abs(100 * afterHoursEquityDifference / portfolio.equity).toFixed(2)}%`
 
-    afterHoursEquityDifference = `${afterHoursSign}${USD(afterHoursEquityDifference)} (${afterHoursSign}${afterPercent})`
+    afterHoursEquityDifference = `${afterHoursSign}${USD(afterHoursEquityDifference)} (${afterHoursEquityDifference >= 0 ? '+' : '-'}${afterPercent})`
   }
 
   return {
