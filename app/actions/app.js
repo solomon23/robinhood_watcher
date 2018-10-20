@@ -61,7 +61,6 @@ export function getAllData() {
       await getAccount()(dispatch, getState)
     }
 
-    // const positions = await API.getAccountPositions(user)
     await getPortfolio()(dispatch, getState)
     await getAccountPositions()(dispatch, getState)
   }
