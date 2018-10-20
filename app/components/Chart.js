@@ -132,7 +132,7 @@ export default class Chart extends Component<Props> {
     // build the chart
     const { chartData, options } = this.getChartData()
 
-    // don't leave the tooltip leave the chart
+    // don't let the tooltip leave the chart
     let left = mouse.x
     if (left < CHART_LEFT) {
       left = CHART_LEFT
