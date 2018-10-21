@@ -27,4 +27,10 @@ describe('StockList component', () => {
     const component = shallow(<StockList {...state} {...actions} />)
     expect(shallowToJson(component)).toMatchSnapshot()
   })
+
+  it('should show as watchlist', () => {
+    const state = { ...defaultState, stocks: [{ symbol: 'z' }, { symbol: 'a' }, { symbol: 'c' }] }
+    const component = shallow(<StockList {...state} {...actions} watchlist />)
+    expect(shallowToJson(component)).toMatchSnapshot()
+  })
 })

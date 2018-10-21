@@ -40,6 +40,10 @@ async function makeCall(url) {
   throw res.code
 }
 
+export async function getSMA(symbol) {
+  return (await fetch(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1d`)).json()
+}
+
 export async function getAccountNumber() {
   const json = await makeCall('/accounts/')
   return json.results[0].account_number
@@ -48,6 +52,23 @@ export async function getAccountNumber() {
 export async function getPortfolio({ user }) {
   const json = await makeCall(`/accounts/${user.accountNumber}/portfolio/`)
   return json
+}
+
+
+export async function getWatchlist() {
+  const json = await makeCall('/watchlists/Default/')
+
+  return Promise.all(
+    json.results.map(async result => {
+      const instrument = await (await fetch(
+        decodeURIComponent(result.instrument)
+      )).json()
+
+      return (await fetch(
+        decodeURIComponent(instrument.quote)
+      )).json()
+    })
+  )
 }
 
 export async function tryAuthenticate() {
@@ -219,8 +240,4 @@ export async function authenticate(username, password, mfaCode,) {
       error: error.message,
     }
   }
-}
-
-export async function getSMA(symbol) {
-  return (await fetch(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1d`)).json()
 }

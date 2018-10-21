@@ -6,10 +6,13 @@ const initialState = {
     portfolioLoading: false,
     positionsLoading: false,
     refreshing: false,
+    watchlistLoading: false,
   },
   portfolio: {
   },
   positions: [
+  ],
+  watchlist: [
   ],
 }
 
@@ -81,6 +84,31 @@ describe('App reducer', () => {
       reducer({}, {
         type: ActionTypes.GET_ACCOUNT_POSITIONS.SUCCESS,
         response: [],
+      })
+    ).toMatchSnapshot()
+  })
+
+  it('should handle GET_WATCH_LIST.REQUEST', () => {
+    expect(
+      reducer({}, {
+        type: ActionTypes.GET_WATCH_LIST.REQUEST,
+      })
+    ).toMatchSnapshot()
+  })
+
+  it('should handle GET_WATCH_LIST.FAILURE', () => {
+    expect(
+      reducer({}, {
+        type: ActionTypes.GET_WATCH_LIST.FAILURE,
+      })
+    ).toMatchSnapshot()
+  })
+
+  it('should handle GET_WATCH_LIST.SUCCESS', () => {
+    expect(
+      reducer({ positions: [{ symbol: 'a' }] }, {
+        type: ActionTypes.GET_WATCH_LIST.SUCCESS,
+        response: [{ symbol: 'a' }, { symbol: 'b' }],
       })
     ).toMatchSnapshot()
   })

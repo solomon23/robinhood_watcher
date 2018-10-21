@@ -11,6 +11,7 @@ let actions = null
 const defaultState = {
   portfolio: { extended_hours_equity: null,  equity: 100, adjusted_equity_previous_close: 101 },
   positions: [],
+  watchlist: [],
   actions: {},
 }
 
@@ -45,5 +46,11 @@ describe('Home component', () => {
     const component = shallow(<Home {...defaultState} {...actions} />)
     component.find('.refresh').simulate('click')
     expect(actions.getAllData).toHaveBeenCalled()
+  })
+
+  it('should change tabs', () => {
+    const component = shallow(<Home {...defaultState} {...actions} />)
+    component.find('.tab').at(1).simulate('click')
+    expect(shallowToJson(component)).toMatchSnapshot()
   })
 })

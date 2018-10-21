@@ -50,6 +50,40 @@ Object {
 }
 `;
 
+exports[`App reducer should handle GET_WATCH_LIST.FAILURE 1`] = `
+Object {
+  "actions": Object {
+    "watchlistLoading": false,
+  },
+}
+`;
+
+exports[`App reducer should handle GET_WATCH_LIST.REQUEST 1`] = `
+Object {
+  "actions": Object {
+    "watchlistLoading": true,
+  },
+}
+`;
+
+exports[`App reducer should handle GET_WATCH_LIST.SUCCESS 1`] = `
+Object {
+  "actions": Object {
+    "watchlistLoading": false,
+  },
+  "positions": Array [
+    Object {
+      "symbol": "a",
+    },
+  ],
+  "watchlist": Array [
+    Object {
+      "symbol": "b",
+    },
+  ],
+}
+`;
+
 exports[`App reducer should handle START_REFRESH_TIMER 1`] = `
 Object {
   "actions": Object {

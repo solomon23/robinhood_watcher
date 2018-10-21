@@ -82,6 +82,25 @@ Array [
     ],
     "type": "GET_ACCOUNT_POSITIONS_SUCCESS",
   },
+  Object {
+    "request": Object {
+      "user": Object {
+        "accountNumber": "10",
+        "authenticated": true,
+      },
+    },
+    "type": "GET_WATCH_LIST_REQUEST",
+  },
+  Object {
+    "request": Object {
+      "user": Object {
+        "accountNumber": "10",
+        "authenticated": true,
+      },
+    },
+    "response": Array [],
+    "type": "GET_WATCH_LIST_SUCCESS",
+  },
 ]
 `;
 
@@ -111,6 +130,34 @@ Array [
       ],
     },
     "type": "GET_PORTFOLIO_SUCCESS",
+  },
+]
+`;
+
+exports[`app actions should fire getWatchList 1`] = `
+Array [
+  Object {
+    "request": Object {
+      "user": Object {
+        "accountNumber": "10",
+        "authenticated": true,
+      },
+    },
+    "type": "GET_WATCH_LIST_REQUEST",
+  },
+  Object {
+    "request": Object {
+      "user": Object {
+        "accountNumber": "10",
+        "authenticated": true,
+      },
+    },
+    "response": Array [
+      Object {
+        "last_traded_price": 2,
+      },
+    ],
+    "type": "GET_WATCH_LIST_SUCCESS",
   },
 ]
 `;

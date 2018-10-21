@@ -50,3 +50,21 @@
       transform: rotate(360deg);
   }
 }
+
+.tabs {
+  margin: 0 8px;
+}
+
+.tab {
+  font-size: 16px;
+  color: $green;
+  text-decoration: none;
+  width: 50%;
+  display: inline-block;
+  margin-top: 10px;
+  padding-bottom: 8px;
+
+  &.selected {
+    border-bottom: 2px solid $green;
+  }
+}

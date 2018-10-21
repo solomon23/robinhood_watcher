@@ -44,10 +44,37 @@ describe('app actions', () => {
       })
   })
 
+  it('should fire getWatchList', () => {
+    fetchMock.mock('https://api.robinhood.com/watchlists/Default/',
+      { body: { results: [{ instrument: 'https://instrument' }] } }
+    )
+
+    fetchMock.mock('https://instrument',
+      { body: { quote: 'https://quote', symbol: 'a', name: 'name' } }
+    )
+
+    fetchMock.mock('https://quote',
+      { body: { last_traded_price: 2 } }
+    )
+
+    const store = mockStore({ user: { authenticated: true, accountNumber: '10' } })
+
+    return store.dispatch(actions.getWatchList())
+      .then(() => {
+        expect(store.getActions()).toMatchSnapshot()
+        return null
+      })
+  })
+
   it('should fire getAllData', () => {
     fetchMock.mock('https://api.robinhood.com/accounts/10/portfolio/',
       { body: { results: [] } }
     )
+
+    fetchMock.mock('https://api.robinhood.com/watchlists/Default/',
+      { body: { results: [] } }
+    )
+
     fetchMock.mock('https://api.robinhood.com/accounts/10/positions/',
       { body: { results: [{ average_buy_price: 10, quantity: 1, instrument: 'https://instrument' }] } }
     )

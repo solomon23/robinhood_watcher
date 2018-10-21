@@ -15,6 +15,9 @@ export const getPortfolioActions = createRequests(GET_PORTFOLIO)
 export const GET_ACCOUNT_POSITIONS = createRequestTypes('GET_ACCOUNT_POSITIONS')
 export const getAccountPositionsActions = createRequests(GET_ACCOUNT_POSITIONS)
 
+export const GET_WATCH_LIST = createRequestTypes('GET_WATCH_LIST')
+export const getWatchListActions = createRequests(GET_WATCH_LIST)
+
 export function startRefreshTimer() {
   return { type: START_REFRESH_TIMER }
 }
@@ -48,6 +51,13 @@ export function getAccountPositions() {
   })
 }
 
+export function getWatchList() {
+  return doApiCall({
+    api: API.getWatchlist,
+    action: getWatchListActions,
+  })
+}
+
 export function getAllData() {
   return async function getAllCallback(dispatch: Dispatch, getState: GetState) {
     const { user } = getState()
@@ -63,5 +73,6 @@ export function getAllData() {
 
     await getPortfolio()(dispatch, getState)
     await getAccountPositions()(dispatch, getState)
+    await getWatchList()(dispatch, getState)
   }
 }
