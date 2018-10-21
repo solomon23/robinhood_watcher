@@ -5,6 +5,7 @@ import { calculateEquity } from '../services/portfolio'
 import styles from './styles/Home.scss'
 import { USD } from '../services/utils'
 import StockList from './StockList'
+import WatchList from './WatchList'
 
 const TABS = {
   STOCKS: 'STOCKS',
@@ -12,22 +13,26 @@ const TABS = {
 }
 
 type Props = {
-  portfolio: object,
-  positions: array,
-  watchlist: array,
-  actions: object,
+  portfolio: Portfolio,
+  positions: Array<Stock>,
+  watchlist: Array<WatchStock>,
+  actions: AppActions,
   getAllData: () => void,
   startRefreshTimer: () => void
 }
 
-export default class Home extends Component<Props> {
+type State = {
+  tab: string
+}
+
+export default class Home extends Component<Props, State> {
   props: Props
 
-  constructor(context, props) {
-    super(context, props)
+  constructor(props: Props) {
+    super(props)
 
     this.onTabClick = this.onTabClick.bind(this)
-    this.refresh = this.refresh.bind(this)
+    this.onRefresh = this.onRefresh.bind(this)
 
     this.state = {
       tab: TABS.STOCKS,
@@ -40,13 +45,15 @@ export default class Home extends Component<Props> {
     startRefreshTimer()
   }
 
-  refresh() {
+  /* :: onRefresh: Function */
+  onRefresh() {
     const { getAllData } = this.props
 
     getAllData()
   }
 
-  onTabClick(tab, e) {
+  /* :: onTabClick: Function */
+  onTabClick(tab: string, e: SyntheticEvent<HTMLDivElement>) {
     if (e) { e.preventDefault() }
 
     this.setState({ tab })
@@ -56,7 +63,7 @@ export default class Home extends Component<Props> {
     const { portfolio, positions, watchlist, actions } = this.props
     const { tab } = this.state
 
-    if (!Object.keys(portfolio).length > 0) {
+    if (!(Object.keys(portfolio).length > 0)) {
       // show a loading state here
       return null
     }
@@ -72,7 +79,7 @@ export default class Home extends Component<Props> {
     return (
       <div className={styles.equityContainer}>
         <div className={styles.header}>
-          <div onClick={this.refresh} className={classnames(styles.refresh, { [styles.reloading]: isReloading })} />
+          <div onClick={this.onRefresh} className={classnames(styles.refresh, { [styles.reloading]: isReloading })} />
           <div className={styles.equity}>
             {USD(equity)}
           </div>
@@ -105,7 +112,7 @@ export default class Home extends Component<Props> {
           <StockList stocks={positions} />
         )}
         {tab === TABS.WATCHLIST && (
-          <StockList stocks={watchlist} watchlist />
+          <WatchList stocks={watchlist} />
         )}
       </div>
     )

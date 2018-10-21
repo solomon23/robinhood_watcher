@@ -1,26 +1,27 @@
+// @flow
 import * as userActions from './user'
 import * as appActions from './app'
 
-export function createRequestTypes(base) {
+export function createRequestTypes(base: string) {
   return ['REQUEST', 'SUCCESS', 'FAILURE'].reduce((acc, type) => {
     acc[type] = `${base}_${type}`
     return acc
   }, {})
 }
 
-export function action(type, payload = {}) {
+export function action(type: string, payload: any = {}) {
   return { type, ...payload }
 }
 
-export function createRequests(base) {
+export function createRequests(base: any) {
   return {
-    request: o => action(base.REQUEST, o),
-    success: o => action(base.SUCCESS, o),
-    failure: o => action(base.FAILURE, o),
+    request: (o: any) => action(base.REQUEST, o),
+    success: (o: any) => action(base.SUCCESS, o),
+    failure: (o: any) => action(base.FAILURE, o),
   }
 }
 
-export function doApiCall(options) {
+export function doApiCall(options: any) {
   const defaults = {
     api: () => { },
     action: {},
@@ -31,7 +32,7 @@ export function doApiCall(options) {
   const opts = { ...defaults, ...options }
   opts.action = Array.isArray(options.action) ? options.action : [options.action]
 
-  return (dispatch, getState) => {
+  return (dispatch: Dispatch, getState: GetState) => {
     // bail if we don't pass any rules sent in
     if (!opts.guardFunc(getState())) {
       return Promise.resolve()

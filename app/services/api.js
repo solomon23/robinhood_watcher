@@ -1,3 +1,4 @@
+// @flow
 import 'node-fetch'
 import Store from 'electron-store'
 
@@ -8,7 +9,7 @@ const headers = {
   'content-type': 'application/json',
 }
 
-function getToken() {
+function getToken(): { token: ?string, refresh_token: ?string } {
   return store.get('token') || { token: null, refresh_token: null }
 }
 
@@ -40,7 +41,7 @@ async function makeCall(url) {
   throw res.code
 }
 
-export async function getSMA(symbol) {
+export async function getSMA(symbol: string): Promise<any> {
   return (await fetch(`https://api.iextrading.com/1.0/stock/${symbol}/chart/1d`)).json()
 }
 
@@ -49,11 +50,10 @@ export async function getAccountNumber() {
   return json.results[0].account_number
 }
 
-export async function getPortfolio({ user }) {
-  const json = await makeCall(`/accounts/${user.accountNumber}/portfolio/`)
+export async function getPortfolio({ user }: { user: User }): Promise<Portfolio> {
+  const json = await makeCall(`/accounts/${user.accountNumber || ''}/portfolio/`)
   return json
 }
-
 
 export async function getWatchlist() {
   const json = await makeCall('/watchlists/Default/')
@@ -71,23 +71,24 @@ export async function getWatchlist() {
   )
 }
 
-export async function tryAuthenticate() {
+export async function tryAuthenticate(): Promise<{ authenticated: boolean, error: ?string }> {
   try {
     const json = await makeCall('/accounts/')
     if (json && json.results) {
-      return { authenticated: true }
+      return { authenticated: true, error: null }
     }
 
-    return { authenticated: false }
+    return { authenticated: false, error: 'Error' }
   } catch(err) {
     return {
       authenticated: false,
+      error: err,
     }
   }
 }
 
-export async function getAccountPositions({ user }) {
-  const positions = await makeCall(`/accounts/${user.accountNumber}/positions/`)
+export async function getAccountPositions({ user }: { user: User }): Promise<Array<Position>> {
+  const positions = await makeCall(`/accounts/${user.accountNumber || ''}/positions/`)
   const transformed = await Promise.all(
     positions.results
       .filter(result => Number(result.quantity) !== 0)
@@ -115,7 +116,7 @@ export async function getAccountPositions({ user }) {
   return transformed
 }
 
-async function authRequest(url, options = {}) {
+async function authRequest(url: string, options: any = {}): Promise<any> {
   const { token } = getToken()
 
   const opts = {
@@ -123,7 +124,7 @@ async function authRequest(url, options = {}) {
     Accept: 'application/json',
     headers: {
       ...headers,
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token || ''}`,
     },
   }
 
@@ -198,9 +199,9 @@ export async function refreshAuthenticate() {
   }
 }
 
-export async function authenticate(username, password, mfaCode,) {
+export async function authenticate(username: string, password: string, mfaCode: ?string): Promise<any> {
   try {
-    const body = {
+    const body: any = {
       username,
       password,
       'client_id': 'c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS',

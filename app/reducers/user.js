@@ -1,7 +1,6 @@
 // @flow
 import * as userActions from '../actions/user'
 import * as appActions from '../actions/app'
-import type { Action } from './types'
 
 const defaultState = {
   isLoading: false,
@@ -12,7 +11,7 @@ const defaultState = {
   accountNumber: null,
 }
 
-export default function app(state = defaultState, action: Action) {
+export default function app(state: any = defaultState, action: Action) {
   switch (action.type) {
     case userActions.LOGIN_USER_LOADING:
       return { ...defaultState, isLoading: true, authenticated: false }

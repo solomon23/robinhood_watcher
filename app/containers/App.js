@@ -7,7 +7,7 @@ import * as UserActions from '../actions/user'
 import LoginPage from './LoginPage'
 import ChartPage from './ChartPage'
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return bindActionCreators(UserActions, dispatch)
 }
 
@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 
 type Props = {
   children: React.Node,
-  user: object,
+  user: User,
   tryAuth: () => void
 }
 

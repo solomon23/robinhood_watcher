@@ -1,3 +1,4 @@
+// @flow
 const currency = require('currency.js')
 
 const currencyOptions = {
@@ -7,7 +8,7 @@ const currencyOptions = {
   formatWithSymbol: true,
 }
 
-export function USD(amount) {
+export function USD(amount: string | number) {
   return currency(amount, currencyOptions).format(true)
 }
 

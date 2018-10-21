@@ -1,5 +1,6 @@
 [ignore]
 <PROJECT_ROOT>/app/main.prod.js
+<PROJECT_ROOT>/app/main.dev.js
 <PROJECT_ROOT>/app/main.prod.js.map
 <PROJECT_ROOT>/app/dist/.*
 <PROJECT_ROOT>/resources/.*
@@ -12,6 +13,7 @@
 [include]
 
 [libs]
+app/reducers/types.js
 
 [options]
 esproposal.class_static_fields=enable

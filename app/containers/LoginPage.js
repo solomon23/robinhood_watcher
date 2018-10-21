@@ -1,3 +1,4 @@
+// @flow
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Login from '../components/Login'
@@ -9,7 +10,7 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return bindActionCreators(UserActions, dispatch)
 }
 

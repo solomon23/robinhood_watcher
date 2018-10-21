@@ -6,13 +6,13 @@ import { USD } from '../services/utils'
 import styles from './styles/StockRow.scss'
 
 type Props = {
-  stock: object
+  stock: WatchStock
 }
 
 export default class WatchRow extends Component<Props> {
   props: Props
 
-  static onClick(symbol) {
+  static onClick(symbol: string) {
     ipcRenderer.send('CHART', { symbol })
   }
 

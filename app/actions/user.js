@@ -1,5 +1,5 @@
+// @flow
 import { authenticate, tryAuthenticate } from '../services/api'
-import type { Dispatch } from '../reducers/types'
 
 export const LOGIN_USER_LOADING = 'LOGIN_USER_LOADING'
 export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR'
@@ -8,7 +8,7 @@ export const LOGIN_USER_NEEDS_MFA = 'LOGIN_USER_NEEDS_MFA'
 export const USER_LOGOUT = 'USER_LOGOUT'
 export const SET_USER_ACCOUNT_NUMBER = 'SET_USER_ACCOUNT_NUMBER'
 
-export function login(username, password, mfaCode) {
+export function login(username: string, password: string, mfaCode: ?string) {
   return (dispatch: Dispatch) => {
     dispatch({ type: LOGIN_USER_LOADING })
 

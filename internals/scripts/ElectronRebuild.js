@@ -2,12 +2,12 @@
 import path from 'path'
 import { execSync } from 'child_process'
 import fs from 'fs'
-import { dependencies } from '../../app/package'
+// import { dependencies } from '../../app/package'
 
 const nodeModulesPath = path.join(__dirname, '..', '..', 'app', 'node_modules')
 
 if (
-  Object.keys(dependencies || {}).length > 0 &&
+  Object.keys({}).length > 0 &&
   fs.existsSync(nodeModulesPath)
 ) {
   const electronRebuildCmd =

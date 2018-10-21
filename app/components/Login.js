@@ -4,17 +4,23 @@ import classnames from 'classnames'
 import styles from './styles/Login.scss'
 
 type Props = {
-  user: object,
-  login: () => null
+  user: User,
+  login: (string, string, ?string) => null
 }
 
-export default class Login extends Component<Props> {
+type State = {
+  token: string,
+  username: string,
+  password: string
+}
+
+export default class Login extends Component<Props, State> {
   props: Props
 
-  constructor(props, context) {
-    super(props, context)
+  constructor(props: Props) {
+    super(props)
 
-    this.login = this.login.bind(this)
+    this.onLogin = this.onLogin.bind(this)
 
     this.state = {
       token: '',
@@ -23,14 +29,15 @@ export default class Login extends Component<Props> {
     }
   }
 
-  login() {
+  /* :: onLogin: Function */
+  onLogin() {
     const { login } = this.props
     const { username, password, token } = this.state
 
     login(username, password, token || null)
   }
 
-  oChangeField(field, e) {
+  oChangeField(field: string, e: SyntheticInputEvent<HTMLInputElement>) {
     this.setState({ [field]: e.target.value })
   }
 
@@ -65,8 +72,7 @@ export default class Login extends Component<Props> {
         )}
         <button
           className={styles.btn}
-          onClick={this.login}
-          data-tclass="btn"
+          onClick={this.onLogin}
           type="button"
         >
           LOGIN

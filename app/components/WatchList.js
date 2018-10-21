@@ -1,13 +1,13 @@
 // @flow
 import React, { Component } from 'react'
-import StockRow from './StockRow'
+import WatchRow from './WatchRow'
 import styles from './styles/StockList.scss'
 
 type Props = {
-  stocks: Array<Stock>
+  stocks: Array<WatchStock>
 }
 
-export default class StockList extends Component<Props> {
+export default class WatchList extends Component<Props> {
   props: Props
 
   render() {
@@ -20,7 +20,7 @@ export default class StockList extends Component<Props> {
     return (
       <div className={styles.stockList}>
         {stocks.sort((a, b) => a.symbol.localeCompare(b.symbol)).map(stock => (
-          <StockRow key={stock.symbol} stock={stock} />
+          <WatchRow key={stock.symbol} stock={stock} />
         ))}
       </div>
     )

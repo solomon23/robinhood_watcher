@@ -5,7 +5,6 @@ import { createHashHistory } from 'history'
 import { routerMiddleware } from 'connected-react-router'
 import createSagaMiddleware from 'redux-saga'
 import createRootReducer from '../reducers'
-import type { counterStateType } from '../reducers/types'
 import sagas from '../sagas'
 
 const history = createHashHistory()
@@ -14,7 +13,7 @@ const router = routerMiddleware(history)
 const sagaMiddleware = createSagaMiddleware()
 const enhancer = applyMiddleware(thunk, router, sagaMiddleware)
 
-function configureStore(initialState?: counterStateType) {
+function configureStore(initialState?: any) {
   sagas(sagaMiddleware)
   return createStore(rootReducer, initialState, enhancer)
 }

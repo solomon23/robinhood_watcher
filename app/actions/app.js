@@ -1,5 +1,4 @@
 // @flow
-import type { GetState, Dispatch } from '../reducers/types'
 import * as API from '../services/api'
 import { createRequests, doApiCall, createRequestTypes } from './actionHelper'
 
