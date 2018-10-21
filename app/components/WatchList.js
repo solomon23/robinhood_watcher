@@ -4,7 +4,7 @@ import WatchRow from './WatchRow'
 import styles from './styles/StockList.scss'
 
 type Props = {
-  stocks: Array<WatchStock>
+  stocks: Array<Stock>
 }
 
 export default class WatchList extends Component<Props> {

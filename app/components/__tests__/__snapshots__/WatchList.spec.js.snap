@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StockList component should display empty 1`] = `""`;
+exports[`WatchList component should display empty 1`] = `""`;
 
-exports[`StockList component should show as watchlist 1`] = `
+exports[`WatchList component should show as watchlist 1`] = `
 <div
   className="stockList"
 >
-  <StockRow
+  <WatchRow
     key="a"
     stock={
       Object {
@@ -14,7 +14,7 @@ exports[`StockList component should show as watchlist 1`] = `
       }
     }
   />
-  <StockRow
+  <WatchRow
     key="c"
     stock={
       Object {
@@ -22,7 +22,7 @@ exports[`StockList component should show as watchlist 1`] = `
       }
     }
   />
-  <StockRow
+  <WatchRow
     key="z"
     stock={
       Object {
@@ -33,11 +33,11 @@ exports[`StockList component should show as watchlist 1`] = `
 </div>
 `;
 
-exports[`StockList component should sort list 1`] = `
+exports[`WatchList component should sort list 1`] = `
 <div
   className="stockList"
 >
-  <StockRow
+  <WatchRow
     key="a"
     stock={
       Object {
@@ -45,7 +45,7 @@ exports[`StockList component should sort list 1`] = `
       }
     }
   />
-  <StockRow
+  <WatchRow
     key="c"
     stock={
       Object {
@@ -53,7 +53,7 @@ exports[`StockList component should sort list 1`] = `
       }
     }
   />
-  <StockRow
+  <WatchRow
     key="z"
     stock={
       Object {

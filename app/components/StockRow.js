@@ -20,11 +20,11 @@ export default class StockRow extends Component<Props> {
   render() {
     const { stock } = this.props
 
-    const price = stock.quote.last_extended_hours_trade_price || stock.quote.last_trade_price
-    const oldPrice = stock.quote.previous_close
+    const price = stock.last_extended_hours_trade_price || stock.last_trade_price
+    const oldPrice = stock.previous_close
 
     const dif = (price - oldPrice)
-    const difference = `${dif > 0 ? '+' : ''}${USD(stock.quantity * dif)}`
+    const difference = `${dif > 0 ? '+' : ''}${USD((stock.quantity || 0) * dif)}`
 
     return (
       <div className={styles.stockRow} onClick={() => StockRow.onClick(stock.symbol)}>

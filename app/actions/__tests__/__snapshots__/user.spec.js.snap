@@ -6,7 +6,7 @@ Array [
     "type": "LOGIN_USER_LOADING",
   },
   Object {
-    "message": undefined,
+    "message": 401,
     "type": "LOGIN_USER_ERROR",
   },
 ]
@@ -41,6 +41,7 @@ Array [
   Object {
     "response": Object {
       "authenticated": true,
+      "error": null,
     },
     "type": "LOGIN_USER_SUCCESS",
   },
@@ -55,6 +56,7 @@ Array [
   Object {
     "response": Object {
       "authenticated": true,
+      "error": null,
     },
     "type": "LOGIN_USER_SUCCESS",
   },

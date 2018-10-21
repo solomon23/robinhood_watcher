@@ -6,7 +6,7 @@ import { USD } from '../services/utils'
 import styles from './styles/StockRow.scss'
 
 type Props = {
-  stock: WatchStock
+  stock: Stock
 }
 
 export default class WatchRow extends Component<Props> {

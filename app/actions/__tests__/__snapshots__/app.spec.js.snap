@@ -72,11 +72,9 @@ Array [
           "quote": "https://quote",
           "symbol": "a",
         },
+        "last_traded_price": 2,
         "name": "name",
         "quantity": 1,
-        "quote": Object {
-          "last_traded_price": 2,
-        },
         "symbol": "a",
       },
     ],

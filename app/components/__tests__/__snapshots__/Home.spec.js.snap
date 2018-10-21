@@ -41,9 +41,8 @@ exports[`Home component should change tabs 1`] = `
       Watchlist
     </a>
   </div>
-  <StockList
+  <WatchList
     stocks={Array []}
-    watchlist={true}
   />
 </div>
 `;

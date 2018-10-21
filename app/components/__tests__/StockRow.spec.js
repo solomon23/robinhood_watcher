@@ -13,7 +13,7 @@ const defaultState = {
 
 describe('StockRow component', () => {
   beforeEach(() => {
-    defaultState.stock = { 'symbol': 'a', quantity: 1, quote: { last_trade_price: 10, previous_close: 5 } }
+    defaultState.stock = { 'symbol': 'a', quantity: 1, last_trade_price: 10, previous_close: 5 }
   })
 
   it('should display positive value', () => {
@@ -22,13 +22,13 @@ describe('StockRow component', () => {
   })
 
   it('should display negative value', () => {
-    defaultState.stock.quote.previous_close = 20
+    defaultState.stock.previous_close = 20
     const component = shallow(<StockRow {...defaultState} {...actions} />)
     expect(shallowToJson(component)).toMatchSnapshot()
   })
 
   it('should display after hours value', () => {
-    defaultState.stock.quote.last_extended_hours_trade_price = 20
+    defaultState.stock.last_extended_hours_trade_price = 20
     const component = shallow(<StockRow {...defaultState} {...actions} />)
     expect(shallowToJson(component)).toMatchSnapshot()
   })

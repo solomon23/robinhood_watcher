@@ -102,9 +102,9 @@ export async function getAccountPositions({ user }: { user: User }): Promise<Arr
         )).json()
 
         return {
+          ...quote,
           averageBuyPrice: Number(result.average_buy_price),
           quantity: Number(result.quantity),
-          quote,
           currentPrice: Number(quote.last_traded_price),
           symbol: instrument.symbol,
           name: instrument.name,

@@ -15,7 +15,7 @@ const TABS = {
 type Props = {
   portfolio: Portfolio,
   positions: Array<Stock>,
-  watchlist: Array<WatchStock>,
+  watchlist: Array<Stock>,
   actions: AppActions,
   getAllData: () => void,
   startRefreshTimer: () => void

@@ -27,31 +27,16 @@ export type Portfolio = {
   adjusted_equity_previous_close: string
 }
 
-export type Position = {
-}
-
 export type AppActions = {
   portfolioLoading: boolean,
   positionsLoading: boolean,
   watchlistLoading: boolean
 }
 
-export type WatchStock = {
+export type Stock = {
   last_extended_hours_trade_price: ?number,
   last_trade_price: number,
   previous_close: number,
-  symbol: string
-}
-
-export type Stock = {
   symbol: string,
-  quote: Quote,
-  quantity: number
-}
-
-export type Quote = {
-  last_extended_hours_trade_price: number,
-  quantity: number,
-  last_trade_price: number,
-  previous_close: number
+  quantity?: number
 }
