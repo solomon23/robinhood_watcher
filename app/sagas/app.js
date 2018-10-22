@@ -44,9 +44,6 @@ function* handleLogout() {
 
 function* appQuit() {
   yield takeEvery(appActions.APP_QUIT, () => {
-    // kill our cookie
-    api.logout()
-
     // send the quit
     ipcRenderer.send('APP_QUIT')
   })
