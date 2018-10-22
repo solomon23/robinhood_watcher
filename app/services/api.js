@@ -30,6 +30,10 @@ function getErroFromJson(json) {
   return message
 }
 
+export function logout() {
+  setToken({ token: null, refresh_token: null })
+}
+
 async function makeCall(url) {
   const res = await authRequest(`${API_ROOT}${url}`)
   const json = await res.json()

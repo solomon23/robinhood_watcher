@@ -1,6 +1,5 @@
 // @flow
 import * as userActions from './user'
-import * as appActions from './app'
 
 export function createRequestTypes(base: string) {
   return ['REQUEST', 'SUCCESS', 'FAILURE'].reduce((acc, type) => {
@@ -64,7 +63,6 @@ export function doApiCall(options: any) {
         if (error === 401) {
           // log the user out and stop refreshing the data since our auth token is no longer valid
           dispatch(userActions.logout())
-          dispatch(appActions.stopRefresh())
         }
       })
   }

@@ -1,5 +1,7 @@
 import { takeEvery, fork, put, call, race, take } from 'redux-saga/effects'
 import * as appActions from '../actions/app'
+import * as userActions from '../actions/user'
+import * as api from '../services/api'
 
 const REFRESH_TIME = 1000 * 60 * 10
 
@@ -29,8 +31,19 @@ function* handleStartRefresh() {
   })
 }
 
+function* handleLogout() {
+  yield takeEvery(userActions.USER_LOGOUT, function* handler() {
+    // stop refreshing
+    yield put (appActions.stopRefresh())
+
+    // kill our cookie
+    api.logout()
+  })
+}
+
 function* app() {
   yield fork(handleStartRefresh)
+  yield fork(handleLogout)
 }
 
 export default app

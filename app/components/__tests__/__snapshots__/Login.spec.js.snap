@@ -20,7 +20,6 @@ exports[`Login component should display 1`] = `
   />
   <button
     className="btn"
-    data-tclass="btn"
     onClick={[Function]}
     type="button"
   >
@@ -49,7 +48,6 @@ exports[`Login component should display loading 1`] = `
   />
   <button
     className="btn"
-    data-tclass="btn"
     onClick={[Function]}
     type="button"
   >
@@ -85,7 +83,6 @@ exports[`Login component should show token 1`] = `
   />
   <button
     className="btn"
-    data-tclass="btn"
     onClick={[Function]}
     type="button"
   >
