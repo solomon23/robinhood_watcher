@@ -4,6 +4,7 @@ import { createRequests, doApiCall, createRequestTypes } from './actionHelper'
 
 export const START_REFRESH_TIMER = 'START_REFRESH_TIMER'
 export const STOP_REFRESH_TIMER = 'STOP_REFRESH_TIMER'
+export const APP_QUIT = 'APP_QUIT'
 
 export const GET_ACCOUNT_NUMBER = createRequestTypes('GET_ACCOUNT_NUMBER')
 export const getAccountNumberActions = createRequests(GET_ACCOUNT_NUMBER)
@@ -23,6 +24,10 @@ export function startRefreshTimer() {
 
 export function stopRefresh() {
   return { type: STOP_REFRESH_TIMER }
+}
+
+export function appQuit() {
+  return { type: APP_QUIT }
 }
 
 export function getAccount() {

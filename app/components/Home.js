@@ -18,7 +18,8 @@ type Props = {
   watchlist: Array<Stock>,
   actions: AppActions,
   getAllData: () => void,
-  startRefreshTimer: () => void
+  startRefreshTimer: () => void,
+  appQuit: () => void
 }
 
 type State = {
@@ -33,6 +34,7 @@ export default class Home extends Component<Props, State> {
 
     this.onTabClick = this.onTabClick.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
+    this.onQuitClick = this.onQuitClick.bind(this)
 
     this.state = {
       tab: TABS.STOCKS,
@@ -59,6 +61,14 @@ export default class Home extends Component<Props, State> {
     this.setState({ tab })
   }
 
+  /* :: onQuitClick: Function */
+  onQuitClick(e: SyntheticEvent<HTMLAnchorElement>) {
+    const { appQuit } = this.props
+    if (e) { e.preventDefault() }
+
+    appQuit()
+  }
+
   render() {
     const { portfolio, positions, watchlist, actions } = this.props
     const { tab } = this.state
@@ -80,6 +90,7 @@ export default class Home extends Component<Props, State> {
       <div className={styles.equityContainer}>
         <div className={styles.header}>
           <div onClick={this.onRefresh} className={classnames(styles.refresh, { [styles.reloading]: isReloading })} />
+          <a href="#" className={styles.quit} onClick={this.onQuitClick}>X</a>
           <div className={styles.equity}>
             {USD(equity)}
           </div>

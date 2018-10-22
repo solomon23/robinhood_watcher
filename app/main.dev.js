@@ -77,6 +77,8 @@ app.on('ready', async () => {
     Toolbar.setTitle(arg)
   })
 
+  ipcMain.on('APP_QUIT', () => app.quit())
+
   ipcMain.on('CHART', (event, data) => {
     const { symbol } = data
     createStockWindow(symbol)

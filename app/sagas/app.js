@@ -1,4 +1,5 @@
 import { takeEvery, fork, put, call, race, take } from 'redux-saga/effects'
+import { ipcRenderer } from 'electron'
 import * as appActions from '../actions/app'
 import * as userActions from '../actions/user'
 import * as api from '../services/api'
@@ -41,9 +42,20 @@ function* handleLogout() {
   })
 }
 
+function* appQuit() {
+  yield takeEvery(appActions.APP_QUIT, () => {
+    // kill our cookie
+    api.logout()
+
+    // send the quit
+    ipcRenderer.send('APP_QUIT')
+  })
+}
+
 function* app() {
   yield fork(handleStartRefresh)
   yield fork(handleLogout)
+  yield fork(appQuit)
 }
 
 export default app

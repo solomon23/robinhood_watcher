@@ -17,7 +17,7 @@ const defaultState = {
 
 describe('Home component', () => {
   beforeEach(() => {
-    actions = { getAllData: jest.fn(), startRefreshTimer: jest.fn() }
+    actions = { getAllData: jest.fn(), startRefreshTimer: jest.fn(), appQuit: jest.fn() }
   })
 
   it('should display for open hours', () => {
@@ -46,6 +46,12 @@ describe('Home component', () => {
     const component = shallow(<Home {...defaultState} {...actions} />)
     component.find('.refresh').simulate('click')
     expect(actions.getAllData).toHaveBeenCalled()
+  })
+
+  it('should fire quit', () => {
+    const component = shallow(<Home {...defaultState} {...actions} />)
+    component.find('.quit').simulate('click')
+    expect(actions.appQuit).toHaveBeenCalled()
   })
 
   it('should change tabs', () => {

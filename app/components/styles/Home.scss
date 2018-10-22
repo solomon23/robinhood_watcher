@@ -68,3 +68,12 @@
     border-bottom: 2px solid $green;
   }
 }
+
+.quit {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+}
