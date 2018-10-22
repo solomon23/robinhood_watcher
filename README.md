@@ -6,6 +6,7 @@ Built on the [Electron-React-Boilerplate](https://github.com/electron-react-boil
 
 ## Building
 
-```yarn install```
-
-```yarn dev```
+```
+yarn install
+yarn dev
+```
