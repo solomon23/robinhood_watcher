@@ -6,7 +6,7 @@ Array [
     "type": "LOGIN_USER_LOADING",
   },
   Object {
-    "message": 401,
+    "message": "401",
     "type": "LOGIN_USER_ERROR",
   },
 ]

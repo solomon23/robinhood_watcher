@@ -9,7 +9,7 @@ const headers = {
   'content-type': 'application/json',
 }
 
-function getToken(): { token: ?string, refresh_token: ?string } {
+export function getToken(): { token: ?string, refresh_token: ?string } {
   return store.get('token') || { token: null, refresh_token: null }
 }
 
@@ -86,7 +86,7 @@ export async function tryAuthenticate(): Promise<{ authenticated: boolean, error
   } catch(err) {
     return {
       authenticated: false,
-      error: err,
+      error: `${err}`,
     }
   }
 }

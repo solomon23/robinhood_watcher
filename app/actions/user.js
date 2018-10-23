@@ -1,5 +1,5 @@
 // @flow
-import { authenticate, tryAuthenticate } from '../services/api'
+import { authenticate, tryAuthenticate, getToken } from '../services/api'
 
 export const LOGIN_USER_LOADING = 'LOGIN_USER_LOADING'
 export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR'
@@ -31,6 +31,11 @@ export function login(username: string, password: string, mfaCode: ?string) {
 
 export function tryAuth() {
   return (dispatch: Dispatch) => {
+    const token = getToken()
+    if (!token || !token.token) {
+      return null
+    }
+
     dispatch({ type: LOGIN_USER_LOADING })
 
     return tryAuthenticate()
