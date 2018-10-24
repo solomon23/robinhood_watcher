@@ -17,9 +17,10 @@ type Props = {
   positions: Array<Stock>,
   watchlist: Array<Stock>,
   actions: AppActions,
+  settings: UserSettings,
   getAllData: () => void,
   startRefreshTimer: () => void,
-  appQuit: () => void
+  openSettings: (UserSettings) => void
 }
 
 type State = {
@@ -34,7 +35,7 @@ export default class Home extends Component<Props, State> {
 
     this.onTabClick = this.onTabClick.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
-    this.onQuitClick = this.onQuitClick.bind(this)
+    this.onSettingsClick = this.onSettingsClick.bind(this)
 
     this.state = {
       tab: TABS.STOCKS,
@@ -61,12 +62,11 @@ export default class Home extends Component<Props, State> {
     this.setState({ tab })
   }
 
-  /* :: onQuitClick: Function */
-  onQuitClick(e: SyntheticEvent<HTMLAnchorElement>) {
-    const { appQuit } = this.props
-    if (e) { e.preventDefault() }
+  /* :: onSettingsClick: Function */
+  onSettingsClick() {
+    const { settings, openSettings } = this.props
 
-    appQuit()
+    openSettings(settings)
   }
 
   render() {
@@ -90,7 +90,7 @@ export default class Home extends Component<Props, State> {
       <div className={styles.equityContainer}>
         <div className={styles.header}>
           <div onClick={this.onRefresh} className={classnames(styles.refresh, { [styles.reloading]: isReloading })} />
-          <a href="#" className={styles.quit} onClick={this.onQuitClick}>X</a>
+          <div onClick={this.onSettingsClick} className={styles.settings} />
           <div className={styles.equity}>
             {USD(equity)}
           </div>

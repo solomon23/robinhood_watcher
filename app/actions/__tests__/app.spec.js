@@ -15,7 +15,7 @@ describe('app actions', () => {
   })
 
   it('should fire stop timer', () => {
-    expect(actions.stopRefresh()).toMatchSnapshot()
+    expect(actions.stopRefreshTimer()).toMatchSnapshot()
   })
 
   it('should fire getAccount', () => {

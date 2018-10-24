@@ -1,6 +1,7 @@
 // @flow
 import * as API from '../services/api'
 import { createRequests, doApiCall, createRequestTypes } from './actionHelper'
+import { createSettingsWindow } from '../services/windows'
 
 export const START_REFRESH_TIMER = 'START_REFRESH_TIMER'
 export const STOP_REFRESH_TIMER = 'STOP_REFRESH_TIMER'
@@ -22,7 +23,7 @@ export function startRefreshTimer() {
   return { type: START_REFRESH_TIMER }
 }
 
-export function stopRefresh() {
+export function stopRefreshTimer() {
   return { type: STOP_REFRESH_TIMER }
 }
 
@@ -78,5 +79,11 @@ export function getAllData() {
     await getPortfolio()(dispatch, getState)
     await getAccountPositions()(dispatch, getState)
     await getWatchList()(dispatch, getState)
+  }
+}
+
+export function openSettings(settings: UserSettings) {
+  return () => {
+    createSettingsWindow(settings)
   }
 }

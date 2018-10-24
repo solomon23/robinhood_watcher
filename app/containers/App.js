@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import queryString from 'query-string'
 import * as UserActions from '../actions/user'
+import * as SettingsActions from '../actions/settings'
 import LoginPage from './LoginPage'
 import ChartPage from './ChartPage'
+import SettingsPage from './SettingsPage'
 
 function mapDispatchToProps(dispatch: Dispatch) {
-  return bindActionCreators(UserActions, dispatch)
+  return bindActionCreators({ ...UserActions, ...SettingsActions }, dispatch)
 }
 
 function mapStateToProps(state) {
@@ -18,7 +20,8 @@ function mapStateToProps(state) {
 type Props = {
   children: React.Node,
   user: User,
-  tryAuth: () => void
+  tryAuth: () => void,
+  loadSettings: () => void
 }
 
 class App extends React.Component<Props> {
@@ -28,10 +31,17 @@ class App extends React.Component<Props> {
     return queryString.parse(window.location.search).symbol
   }
 
-  componentDidMount() {
-    const { user, tryAuth } = this.props
+  static isSettings() {
+    return queryString.parse(window.location.search).settings === 'true'
+  }
 
-    if (!user.authenticated && !App.chartingSymbol()) {
+  componentDidMount() {
+    const { user, tryAuth, loadSettings } = this.props
+
+    if (!user.authenticated && !App.chartingSymbol() && !App.isSettings()) {
+      // reload the settings
+      loadSettings()
+
       // try to authenticate them
       tryAuth()
     }
@@ -39,10 +49,15 @@ class App extends React.Component<Props> {
 
   render() {
     const symbol = App.chartingSymbol()
+    const isSettings = App.isSettings()
     const { children, user } = this.props
 
     if (symbol) {
       return <React.Fragment><ChartPage symbol={symbol} /></React.Fragment>
+    }
+
+    if (isSettings) {
+      return <React.Fragment><SettingsPage /></React.Fragment>
     }
 
     if (!user.authenticated) {

@@ -1,10 +1,9 @@
-import { takeEvery, fork, put, call, race, take } from 'redux-saga/effects'
-import { ipcRenderer } from 'electron'
+import { takeEvery, fork, put, call, race, take, select } from 'redux-saga/effects'
+import { remote } from 'electron'
 import * as appActions from '../actions/app'
 import * as userActions from '../actions/user'
 import * as api from '../services/api'
-
-const REFRESH_TIME = 1000 * 60 * 10
+import { setTitle } from '../services/ipc'
 
 const wait = ms => (
   new Promise(resolve => {
@@ -18,9 +17,11 @@ function* handleStartRefresh() {
     yield put(appActions.getAllData())
 
     while(true) {
+      const state = yield select()
+
       const timer = yield race({
         stopped: take(appActions.STOP_REFRESH_TIMER),
-        tick: call(wait, REFRESH_TIME),
+        tick: call(wait, state.settings.refreshInterval * 60 * 1000),
       })
 
       if (!timer.stopped) {
@@ -35,24 +36,27 @@ function* handleStartRefresh() {
 function* handleLogout() {
   yield takeEvery(userActions.USER_LOGOUT, function* handler() {
     // stop refreshing
-    yield put (appActions.stopRefresh())
+    yield put (appActions.stopRefreshTimer())
 
     // kill our cookie
     api.logout()
+
+    // update the title
+    setTitle('-')
   })
 }
 
 function* appQuit() {
   yield takeEvery(appActions.APP_QUIT, () => {
     // send the quit
-    ipcRenderer.send('APP_QUIT')
+    remote.app.quit()
   })
 }
 
-function* app() {
+function* appEvents() {
   yield fork(handleStartRefresh)
   yield fork(handleLogout)
   yield fork(appQuit)
 }
 
-export default app
+export default appEvents

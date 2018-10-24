@@ -1,9 +1,12 @@
 import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 
+export type ViewChangeBy = 'PERCENT' | 'TOTAL' | 'INDIVIDUAL'
+
 export type Action = {
   +type: string,
   response: any,
-  message?: string
+  message?: string,
+  payload?: any
 }
 
 export type GetState = () => counterStateType
@@ -39,4 +42,10 @@ export type Stock = {
   previous_close: number,
   symbol: string,
   quantity?: number
+}
+
+export type UserSettings = {
+  refreshInterval: number,
+  viewChangeBy: ViewChangeBy,
+  notifyPercent: number
 }

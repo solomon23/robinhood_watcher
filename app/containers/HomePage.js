@@ -11,6 +11,7 @@ function mapStateToProps(state) {
     positions: state.app.positions,
     watchlist: state.app.watchlist,
     actions: state.app.actions,
+    settings: state.settings,
   }
 }
 

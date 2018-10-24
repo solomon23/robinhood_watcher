@@ -16,7 +16,7 @@ const defaultState = {
   ],
 }
 
-export default function app(state: any = defaultState, action: Action) {
+export default function(state: any = defaultState, action: Action) {
   switch (action.type) {
     case appActions.START_REFRESH_TIMER: {
       const actions = { ...state.actions, refreshing: true }

@@ -1,0 +1,85 @@
+@import 'Variables';
+$white: #aaa;
+
+:global {
+  @import "~muicss/lib/sass/mui.scss";
+}
+
+:global {
+  .mui-select > select {
+    color: $white
+  }
+
+  .mui-textfield > input {
+    color: $white;
+
+    &::placeholder {
+      color: $white;
+    }
+  }
+
+  .mui-textfield > label {
+    color: $white
+  }
+
+  .mui-select__menu {
+    color: #000;
+  }
+
+  .mui-select:focus > select {
+    border-color: $green;
+  }
+
+  .mui-select > select:focus {
+    border-color: $green;
+  }
+
+  .mui-select:focus > label, .mui-select > select:focus ~ label {
+    color: $green;
+  }
+
+  .mui-textfield > input:focus {
+    border-color: $green;
+  }
+
+  .mui-textfield > input:focus ~ label {
+    color: $green;
+  }
+}
+
+.dropdown {
+  label {
+    color: $white
+  }
+}
+
+.inputs {
+  margin: 60px 20px 20px 20px;
+
+}
+
+.buttons {
+  text-align: center;
+  margin: 16px 28px 0 28px;
+
+  button {
+    width: 100%;
+    display: inline-block;
+    background-color: $red;
+    color: #fff;
+
+    &:focus, &:hover {
+      background-color: darken($color: $red, $amount: 10);
+      color: darken($color: #fff, $amount: 10);
+    }
+  }
+
+  .submit button {
+    background-color: $green;
+
+    &:focus, &:hover {
+      background-color: darken($color: $green, $amount: 10);
+      color: darken($color: #fff, $amount: 10);
+    }
+  }
+}

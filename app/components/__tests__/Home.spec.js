@@ -5,6 +5,7 @@ import { shallowToJson } from 'enzyme-to-json'
 import Home from '../Home'
 
 Enzyme.configure({ adapter: new Adapter() })
+jest.mock('../../services/windows.js')
 
 let actions = null
 
@@ -17,7 +18,7 @@ const defaultState = {
 
 describe('Home component', () => {
   beforeEach(() => {
-    actions = { getAllData: jest.fn(), startRefreshTimer: jest.fn(), appQuit: jest.fn() }
+    actions = { getAllData: jest.fn(), startRefreshTimer: jest.fn(), appQuit: jest.fn(), openSettings: jest.fn() }
   })
 
   it('should display for open hours', () => {
@@ -48,10 +49,10 @@ describe('Home component', () => {
     expect(actions.getAllData).toHaveBeenCalled()
   })
 
-  it('should fire quit', () => {
+  it('should fire settings', () => {
     const component = shallow(<Home {...defaultState} {...actions} />)
-    component.find('.quit').simulate('click')
-    expect(actions.appQuit).toHaveBeenCalled()
+    component.find('.settings').simulate('click')
+    expect(actions.openSettings).toHaveBeenCalled()
   })
 
   it('should change tabs', () => {

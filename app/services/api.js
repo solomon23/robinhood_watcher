@@ -17,6 +17,14 @@ function setToken(tokens) {
   store.set('token', tokens)
 }
 
+export function getSettings(): ?UserSettings {
+  return store.get('settings') || null
+}
+
+export function setSettings(settings: UserSettings) {
+  store.set('settings', settings)
+}
+
 function getErroFromJson(json) {
   let message = ''
   if (json.non_field_errors) {

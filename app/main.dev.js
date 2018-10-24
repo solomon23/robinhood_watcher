@@ -8,13 +8,11 @@
  * When running `yarn build` or `yarn build-main`, this file is compiled to
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  *
- * @flow
  */
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, ipcMain } from 'electron'
 import Toolbar from './toolbar'
 
 let mainWindow = null
-let stockInfoWindow = null
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support')
@@ -61,67 +59,14 @@ app.on('ready', async () => {
     await installExtensions()
   }
 
-  mainWindow = new BrowserWindow({
-    show: false,
-    width: 250,
-    height: 500,
-    // width: 825,
-    // height: 625,
-  })
-
-  Toolbar.create()
-  // mainWindow.loadURL(`file://${__dirname}/app.html`)
-  // mainWindow.loadURL(`file://${__dirname}/app.html?symbol=GAMR`)
+  mainWindow = Toolbar.create().window
 
   ipcMain.on('SET_MENU_TITLE', (event, arg) => {
     Toolbar.setTitle(arg)
   })
 
-  ipcMain.on('APP_QUIT', () => app.quit())
-
-  ipcMain.on('CHART', (event, data) => {
-    const { symbol } = data
-    createStockWindow(symbol)
-  })
-
-  // @TODO: Use 'ready-to-show' event
-  //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
-  mainWindow.webContents.on('did-finish-load', () => {
-    if (!mainWindow) {
-      throw new Error('"mainWindow" is not defined')
-    }
-    if (process.env.START_MINIMIZED) {
-      mainWindow.minimize()
-    } else {
-      mainWindow.show()
-      mainWindow.focus()
-    }
-  })
-
-  mainWindow.on('closed', () => {
-    mainWindow = null
+  // pass messages to the main window
+  ipcMain.on('MAIN_WINDOW', (event, arg) => {
+    mainWindow.webContents.send(arg.channel, arg.message)
   })
 })
-
-const createStockWindow = async (symbol) => {
-  if (stockInfoWindow !== null) {
-    stockInfoWindow.destroy()
-  }
-
-  stockInfoWindow = new BrowserWindow({
-    width: 825,
-    height: 625,
-    backgroundColor: '#212025',
-    center: false,
-    title: symbol,
-    resizable: false,
-    titleBarStyle: 'hidden',
-    show: true,
-  })
-
-  stockInfoWindow.loadURL(`file://${__dirname}/app.html?symbol=${symbol}`)
-
-  stockInfoWindow.on('close', () => {
-    stockInfoWindow = null
-  })
-}

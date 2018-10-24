@@ -11,6 +11,7 @@
     "jest/globals": true
   },
   "rules": {
+    "radix": "off",
     "semi": [1, "never"],
     "arrow-parens": ["off"],
     "compat/compat": "error",

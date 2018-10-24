@@ -31,5 +31,7 @@ export default {
 
     mb.tray.setTitle(`-`)
     mb.showWindow()
+
+    return mb
   },
 }

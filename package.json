@@ -201,6 +201,7 @@
     "electron-store": "^2.0.0",
     "history": "^4.7.2",
     "menubar": "^5.2.3",
+    "muicss": "^0.9.41",
     "node-fetch": "^2.2.0",
     "pluralize": "^7.0.0",
     "query-string": "^6.2.0",

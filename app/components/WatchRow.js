@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react'
 import classnames from 'classnames'
-import { ipcRenderer } from 'electron'
 import { USD } from '../services/utils'
 import styles from './styles/StockRow.scss'
+import { createStockWindow } from '../services/windows'
 
 type Props = {
   stock: Stock
@@ -13,7 +13,7 @@ export default class WatchRow extends Component<Props> {
   props: Props
 
   static onClick(symbol: string) {
-    ipcRenderer.send('CHART', { symbol })
+    createStockWindow(symbol)
   }
 
   render() {
