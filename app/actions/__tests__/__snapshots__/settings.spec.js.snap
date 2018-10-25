@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings actions should fire loadSettings 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "notifyPercent": 100,
+      "refreshInterval": 1,
+      "viewChangeBy": "TOTAL",
+    },
+    "type": "SETTINGS_UPDATE",
+  },
+]
+`;
+
+exports[`settings actions should fire saveSettings 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "notifyPercent": 10,
+      "refreshInterval": 5,
+      "viewChangeBy": "TOTAL",
+    },
+    "type": "SETTINGS_UPDATE",
+  },
+]
+`;
+
+exports[`settings actions should fire update settings 1`] = `
+Object {
+  "payload": Object {
+    "refreshInterval": 100,
+  },
+  "type": "SETTINGS_UPDATE",
+}
+`;

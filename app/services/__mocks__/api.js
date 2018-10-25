@@ -4,6 +4,10 @@ export function getSMA() {
   ])
 }
 
+export function getSettings() {
+  return { refreshInterval: 1, viewChangeBy: 'TOTAL', notifyPercent: 100 }
+}
+
 export default {
   getSMA,
 }

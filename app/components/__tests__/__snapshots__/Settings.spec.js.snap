@@ -1,0 +1,379 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Settings component should change refresh 1`] = `
+<div>
+  <div
+    className="inputs"
+  >
+    <Select
+      className="dropdown"
+      label="Refresh every..."
+      name=""
+      onChange={[Function]}
+      onClick={null}
+      onKeyDown={null}
+      placeholder={null}
+      readOnly={false}
+      useDefault={false}
+      value={10}
+    >
+      <Option
+        className=""
+        label="1 Minute"
+        value={1}
+      />
+      <Option
+        className=""
+        label="2 Minutes"
+        value={2}
+      />
+      <Option
+        className=""
+        label="5 Minutes"
+        value={5}
+      />
+      <Option
+        className=""
+        label="10 Minutes"
+        value={10}
+      />
+      <Option
+        className=""
+        label="15 Minutes"
+        value={15}
+      />
+    </Select>
+    <Select
+      className="dropdown"
+      label="View Change By"
+      name=""
+      onChange={[Function]}
+      onClick={null}
+      onKeyDown={null}
+      placeholder={null}
+      readOnly={false}
+      useDefault={false}
+      value="TOTAL"
+    >
+      <Option
+        className=""
+        label="Percent Change"
+        value="PERCENT"
+      />
+      <Option
+        className=""
+        label="Individual Gain/Loss"
+        value="INDIVIDUAL"
+      />
+      <Option
+        className=""
+        label="Total Gain/Loss"
+        value="TOTAL"
+      />
+    </Select>
+    <_class
+      className=""
+      floatingLabel={false}
+      hint={null}
+      invalid={false}
+      label="Notify me if a prices moves by..."
+      pattern="[0-9]"
+      placeholder="2%"
+    />
+  </div>
+  <div
+    className="buttons"
+  >
+    <div
+      className="submit"
+    >
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Submit
+      </Button>
+    </div>
+    <div>
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Logout
+      </Button>
+    </div>
+    <div>
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Quit
+      </Button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Settings component should display 1`] = `
+<div>
+  <div
+    className="inputs"
+  >
+    <Select
+      className="dropdown"
+      label="Refresh every..."
+      name=""
+      onChange={[Function]}
+      onClick={null}
+      onKeyDown={null}
+      placeholder={null}
+      readOnly={false}
+      useDefault={false}
+      value={1}
+    >
+      <Option
+        className=""
+        label="1 Minute"
+        value={1}
+      />
+      <Option
+        className=""
+        label="2 Minutes"
+        value={2}
+      />
+      <Option
+        className=""
+        label="5 Minutes"
+        value={5}
+      />
+      <Option
+        className=""
+        label="10 Minutes"
+        value={10}
+      />
+      <Option
+        className=""
+        label="15 Minutes"
+        value={15}
+      />
+    </Select>
+    <Select
+      className="dropdown"
+      label="View Change By"
+      name=""
+      onChange={[Function]}
+      onClick={null}
+      onKeyDown={null}
+      placeholder={null}
+      readOnly={false}
+      useDefault={false}
+      value="TOTAL"
+    >
+      <Option
+        className=""
+        label="Percent Change"
+        value="PERCENT"
+      />
+      <Option
+        className=""
+        label="Individual Gain/Loss"
+        value="INDIVIDUAL"
+      />
+      <Option
+        className=""
+        label="Total Gain/Loss"
+        value="TOTAL"
+      />
+    </Select>
+    <_class
+      className=""
+      floatingLabel={false}
+      hint={null}
+      invalid={false}
+      label="Notify me if a prices moves by..."
+      pattern="[0-9]"
+      placeholder="2%"
+    />
+  </div>
+  <div
+    className="buttons"
+  >
+    <div
+      className="submit"
+    >
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Submit
+      </Button>
+    </div>
+    <div>
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Logout
+      </Button>
+    </div>
+    <div>
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Quit
+      </Button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Settings component should view by 1`] = `
+<div>
+  <div
+    className="inputs"
+  >
+    <Select
+      className="dropdown"
+      label="Refresh every..."
+      name=""
+      onChange={[Function]}
+      onClick={null}
+      onKeyDown={null}
+      placeholder={null}
+      readOnly={false}
+      useDefault={false}
+      value={1}
+    >
+      <Option
+        className=""
+        label="1 Minute"
+        value={1}
+      />
+      <Option
+        className=""
+        label="2 Minutes"
+        value={2}
+      />
+      <Option
+        className=""
+        label="5 Minutes"
+        value={5}
+      />
+      <Option
+        className=""
+        label="10 Minutes"
+        value={10}
+      />
+      <Option
+        className=""
+        label="15 Minutes"
+        value={15}
+      />
+    </Select>
+    <Select
+      className="dropdown"
+      label="View Change By"
+      name=""
+      onChange={[Function]}
+      onClick={null}
+      onKeyDown={null}
+      placeholder={null}
+      readOnly={false}
+      useDefault={false}
+      value="PERCENT"
+    >
+      <Option
+        className=""
+        label="Percent Change"
+        value="PERCENT"
+      />
+      <Option
+        className=""
+        label="Individual Gain/Loss"
+        value="INDIVIDUAL"
+      />
+      <Option
+        className=""
+        label="Total Gain/Loss"
+        value="TOTAL"
+      />
+    </Select>
+    <_class
+      className=""
+      floatingLabel={false}
+      hint={null}
+      invalid={false}
+      label="Notify me if a prices moves by..."
+      pattern="[0-9]"
+      placeholder="2%"
+    />
+  </div>
+  <div
+    className="buttons"
+  >
+    <div
+      className="submit"
+    >
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Submit
+      </Button>
+    </div>
+    <div>
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Logout
+      </Button>
+    </div>
+    <div>
+      <Button
+        className=""
+        color="default"
+        onClick={[Function]}
+        size="default"
+        type="button"
+        variant="default"
+      >
+        Quit
+      </Button>
+    </div>
+  </div>
+</div>
+`;

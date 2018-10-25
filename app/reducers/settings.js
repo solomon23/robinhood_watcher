@@ -10,7 +10,7 @@ const defaultState = {
 export default function(state: any = defaultState, action: Action) {
   switch (action.type) {
     case settingsActions.SETTINGS_UPDATE:
-      return { ...state, ...action.payload, loaded: true }
+      return { ...state, ...action.payload }
 
     default:
       return state

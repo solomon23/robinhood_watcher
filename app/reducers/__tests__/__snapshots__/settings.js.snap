@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings reducer should handle SETTINGS_UPDATE 1`] = `
+Object {
+  "notifyPercent": 0,
+  "refreshInterval": 15,
+  "viewChangeBy": "TOTAL",
+}
+`;

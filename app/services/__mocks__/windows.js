@@ -1,9 +1,3 @@
-export function closeSettingsWindow() {
-}
-
-export function createStockWindow() {
-}
-
-export function createSettingsWindow() {
-
-}
+export const closeSettingsWindow = jest.fn()
+export const createStockWindow = jest.fn()
+export const createSettingsWindow = jest.fn()

@@ -2,8 +2,11 @@ import configureMockStore from 'redux-mock-store'
 import fetchMock from 'fetch-mock'
 import thunk from 'redux-thunk'
 import * as actions from '../app'
+import * as windows from '../../services/windows'
 
 const mockStore = configureMockStore([thunk])
+
+jest.mock('../../services/windows.js')
 
 describe('app actions', () => {
   afterEach(() => {
@@ -94,5 +97,10 @@ describe('app actions', () => {
         expect(store.getActions()).toMatchSnapshot()
         return null
       })
+  })
+
+  it('should open the settings window', () => {
+    actions.openSettings()()
+    expect(windows.createSettingsWindow).toHaveBeenCalled()
   })
 })
