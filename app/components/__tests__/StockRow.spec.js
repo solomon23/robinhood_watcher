@@ -9,6 +9,7 @@ Enzyme.configure({ adapter: new Adapter() })
 const actions = {}
 const defaultState = {
   stock: {},
+  viewBy: 'TOTAL',
 }
 
 describe('StockRow component', () => {

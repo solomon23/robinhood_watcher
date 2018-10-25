@@ -5,6 +5,7 @@ import Select from 'muicss/lib/react/select'
 import Input from 'muicss/lib/react/input'
 import Button from 'muicss/lib/react/button'
 import styles from './styles/Settings.scss'
+import { VIEW_BY } from '../actions/settings'
 
 type Props = {
   saveSettings: (UserSettings) => void,
@@ -28,6 +29,7 @@ export default class Settings extends Component<Props, State> {
     this.onQuitClick = this.onQuitClick.bind(this)
     this.onLogoutClick = this.onLogoutClick.bind(this)
     this.onRefreshChange = this.onRefreshChange.bind(this)
+    this.onViewByChange = this.onViewByChange.bind(this)
 
     this.state = {
       updated: false,
@@ -71,6 +73,13 @@ export default class Settings extends Component<Props, State> {
     this.setState({ settings })
   }
 
+  /* :: onViewByChange: Function */
+  onViewByChange(e: SyntheticInputEvent<HTMLInputElement>) {
+    const { settings: currentSettings } = this.state
+    const settings = { ...currentSettings, viewChangeBy: e.target.value }
+    this.setState({ settings })
+  }
+
   render() {
     const { settings } = this.state
 
@@ -84,10 +93,10 @@ export default class Settings extends Component<Props, State> {
             <Option value={10} label="10 Minutes" />
             <Option value={15} label="15 Minutes" />
           </Select>
-          <Select label="View Change By" value="percent" className={styles.dropdown}>
-            <Option value="percent" label="Percent Change" />
-            <Option value="gain/loss" label="Individual Gain/Loss" />
-            <Option value="total-gain/loss" label="Total Gain/Loss" />
+          <Select label="View Change By" value={settings.viewChangeBy} onChange={this.onViewByChange} className={styles.dropdown}>
+            <Option value={VIEW_BY.PERCENT} label="Percent Change" />
+            <Option value={VIEW_BY.INDIVIDUAL} label="Individual Gain/Loss" />
+            <Option value={VIEW_BY.TOTAL} label="Total Gain/Loss" />
           </Select>
           <Input label="Notify me if a prices moves by..." placeholder="2%" pattern="[0-9]" />
         </div>

@@ -11,13 +11,10 @@ exports[`Home component should change tabs 1`] = `
       className="refresh"
       onClick={[Function]}
     />
-    <a
+    <div
       className="settings"
-      href="#"
       onClick={[Function]}
-    >
-      X
-    </a>
+    />
     <div
       className="equity"
     >
@@ -50,6 +47,7 @@ exports[`Home component should change tabs 1`] = `
   </div>
   <WatchList
     stocks={Array []}
+    viewBy="TOTAL"
   />
 </div>
 `;
@@ -65,13 +63,10 @@ exports[`Home component should display for after hours 1`] = `
       className="refresh"
       onClick={[Function]}
     />
-    <a
+    <div
       className="settings"
-      href="#"
       onClick={[Function]}
-    >
-      X
-    </a>
+    />
     <div
       className="equity"
     >
@@ -110,6 +105,7 @@ exports[`Home component should display for after hours 1`] = `
   </div>
   <StockList
     stocks={Array []}
+    viewBy="TOTAL"
   />
 </div>
 `;
@@ -125,13 +121,10 @@ exports[`Home component should display for open hours 1`] = `
       className="refresh"
       onClick={[Function]}
     />
-    <a
+    <div
       className="settings"
-      href="#"
       onClick={[Function]}
-    >
-      X
-    </a>
+    />
     <div
       className="equity"
     >
@@ -164,6 +157,7 @@ exports[`Home component should display for open hours 1`] = `
   </div>
   <StockList
     stocks={Array []}
+    viewBy="TOTAL"
   />
 </div>
 `;
@@ -179,13 +173,10 @@ exports[`Home component should show loading 1`] = `
       className="refresh reloading"
       onClick={[Function]}
     />
-    <a
+    <div
       className="settings"
-      href="#"
       onClick={[Function]}
-    >
-      X
-    </a>
+    />
     <div
       className="equity"
     >
@@ -218,6 +209,7 @@ exports[`Home component should show loading 1`] = `
   </div>
   <StockList
     stocks={Array []}
+    viewBy="TOTAL"
   />
 </div>
 `;

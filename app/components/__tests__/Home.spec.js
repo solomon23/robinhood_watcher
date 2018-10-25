@@ -14,6 +14,9 @@ const defaultState = {
   positions: [],
   watchlist: [],
   actions: {},
+  settings: {
+    viewChangeBy: 'TOTAL',
+  },
 }
 
 describe('Home component', () => {

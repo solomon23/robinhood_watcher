@@ -4,14 +4,15 @@ import StockRow from './StockRow'
 import styles from './styles/StockList.scss'
 
 type Props = {
-  stocks: Array<Stock>
+  stocks: Array<Stock>,
+  viewBy: string
 }
 
 export default class StockList extends Component<Props> {
   props: Props
 
   render() {
-    const { stocks } = this.props
+    const { stocks, viewBy } = this.props
 
     if (!stocks || stocks.length === 0) {
       return null
@@ -20,7 +21,7 @@ export default class StockList extends Component<Props> {
     return (
       <div className={styles.stockList}>
         {stocks.sort((a, b) => a.symbol.localeCompare(b.symbol)).map(stock => (
-          <StockRow key={stock.symbol} stock={stock} />
+          <StockRow key={stock.symbol} stock={stock} viewBy={viewBy} />
         ))}
       </div>
     )

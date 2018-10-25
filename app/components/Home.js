@@ -70,7 +70,7 @@ export default class Home extends Component<Props, State> {
   }
 
   render() {
-    const { portfolio, positions, watchlist, actions } = this.props
+    const { portfolio, positions, watchlist, actions, settings } = this.props
     const { tab } = this.state
 
     if (!(Object.keys(portfolio).length > 0)) {
@@ -120,10 +120,10 @@ export default class Home extends Component<Props, State> {
           </a>
         </div>
         {tab === TABS.STOCKS && (
-          <StockList stocks={positions} />
+          <StockList stocks={positions} viewBy={settings.viewChangeBy} />
         )}
         {tab === TABS.WATCHLIST && (
-          <WatchList stocks={watchlist} />
+          <WatchList stocks={watchlist} viewBy={settings.viewChangeBy} />
         )}
       </div>
     )

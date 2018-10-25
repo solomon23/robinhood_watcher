@@ -1,7 +1,5 @@
 import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 
-export type ViewChangeBy = 'PERCENT' | 'TOTAL' | 'INDIVIDUAL'
-
 export type Action = {
   +type: string,
   response: any,
@@ -46,6 +44,6 @@ export type Stock = {
 
 export type UserSettings = {
   refreshInterval: number,
-  viewChangeBy: ViewChangeBy,
+  viewChangeBy: string,
   notifyPercent: number
 }
