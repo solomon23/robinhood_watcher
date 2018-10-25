@@ -64,6 +64,10 @@
   margin-top: 10px;
   padding-bottom: 8px;
 
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+  }
+
   &.selected {
     border-bottom: 2px solid $green;
   }
