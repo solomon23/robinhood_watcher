@@ -102,7 +102,7 @@ export default class Settings extends Component<Props, State> {
         </div>
         <div className={styles.buttons}>
           <div className={styles.submit}>
-            <Button onClick={this.onSaveClick} type="button">Submit</Button>
+            <Button onClick={this.onSaveClick}>Submit</Button>
           </div>
           <div>
             <Button type="button" onClick={this.onLogoutClick}>Logout</Button>
