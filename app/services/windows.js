@@ -1,16 +1,16 @@
-import { remote } from 'electron';
+import { remote } from 'electron'
 
-let stockInfoWindow = null;
-let settingsWindow = null;
+let stockInfoWindow = null
+let settingsWindow = null
 
 export const closeSettingsWindow = () => {
-  settingsWindow.destroy();
-  settingsWindow = null;
-};
+  settingsWindow.destroy()
+  settingsWindow = null
+}
 
-export const createStockWindow = symbol => {
+export const createStockWindow = (symbol) => {
   if (stockInfoWindow !== null) {
-    stockInfoWindow.destroy();
+    stockInfoWindow.destroy()
   }
 
   stockInfoWindow = new remote.BrowserWindow({
@@ -21,23 +21,19 @@ export const createStockWindow = symbol => {
     title: symbol,
     resizable: false,
     titleBarStyle: 'hidden',
-    show: true
-  });
+    show: true,
+  })
 
-  stockInfoWindow.loadURL(
-    `file://${window.dirname}/app.html?symbol=${symbol}&__dirname=${
-      window.dirname
-    }`
-  );
+  stockInfoWindow.loadURL(`file://${window.dirname}/app.html?symbol=${symbol}&__dirname=${window.dirname}`)
 
   stockInfoWindow.on('close', () => {
-    stockInfoWindow = null;
-  });
-};
+    stockInfoWindow = null
+  })
+}
 
-export const createSettingsWindow = settings => {
+export const createSettingsWindow = (settings) => {
   if (settingsWindow !== null) {
-    settingsWindow.destroy();
+    settingsWindow.destroy()
   }
 
   settingsWindow = new remote.BrowserWindow({
@@ -45,24 +41,20 @@ export const createSettingsWindow = settings => {
     width: 250,
     resizable: false,
     backgroundColor: '#212025',
-    titleBarStyle: 'hidden'
-  });
+    titleBarStyle: 'hidden',
+  })
 
-  settingsWindow.loadURL(
-    `file://${window.dirname}/app.html?settings=true&__dirname=${
-      window.dirname
-    }`
-  );
+  settingsWindow.loadURL(`file://${window.dirname}/app.html?settings=true&__dirname=${window.dirname}`)
 
   settingsWindow.webContents.on('did-finish-load', () => {
-    settingsWindow.webContents.send('USER_SETTINGS', settings);
-  });
+    settingsWindow.webContents.send('USER_SETTINGS', settings)
+  })
 
   settingsWindow.on('close', () => {
-    settingsWindow = null;
-  });
-};
+    settingsWindow = null
+  })
+}
 
 export default {
-  createStockWindow
-};
+  createStockWindow,
+}

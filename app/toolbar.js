@@ -1,22 +1,22 @@
-import path from 'path';
-import menubar from 'menubar';
-import { Tray, nativeImage } from 'electron';
+import path from 'path'
+import menubar from 'menubar'
+import { Tray, nativeImage } from 'electron'
 
-const ICON_LOGO_PATH = path.join(__dirname, '../resources/icons/16x16.png');
-const ICON_LOGO = nativeImage.createFromPath(ICON_LOGO_PATH);
+const ICON_LOGO_PATH = path.join(__dirname, '../resources/icons/16x16.png')
+const ICON_LOGO = nativeImage.createFromPath(ICON_LOGO_PATH)
 
-let mb = null;
-let tray = null;
+let mb = null
+let tray = null
 
 export default {
-  setTitle: title => {
+  setTitle: (title) => {
     if (mb && mb.tray) {
-      mb.tray.setTitle(title);
+      mb.tray.setTitle(title)
     }
   },
 
   create: () => {
-    tray = new Tray(ICON_LOGO);
+    tray = new Tray(ICON_LOGO)
     mb = menubar({
       dir: __dirname,
       icon: ICON_LOGO_PATH,
@@ -27,13 +27,13 @@ export default {
       tray,
       resizable: false,
       webPreferences: {
-        experimentalFeatures: true
-      }
-    });
+        experimentalFeatures: true,
+      },
+    })
 
-    mb.tray.setTitle(`-`);
-    mb.showWindow();
+    mb.tray.setTitle(`-`)
+    mb.showWindow()
 
-    return mb;
-  }
-};
+    return mb
+  },
+}
